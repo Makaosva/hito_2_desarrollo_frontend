@@ -5,10 +5,12 @@ import InicioSesion from "./views/InicioSesion";
 import Perfil from "./views/Perfil";
 import NavbarMarket from "./components/NavBarMarket";
 import Registro from "./views/Registro";
+import CrearPublicacion from "./views/CrearPublicacion";
+import UsuariosProvider from "./context/UsuarioContext";
 
 function App() {
   return (
-    <div>
+    <UsuariosProvider>
       <NavbarMarket />
       <div>
         Productos
@@ -17,9 +19,10 @@ function App() {
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/perfil" element={<Perfil />} />
+          <Route path="/crear-publicacion" element={<CrearPublicacion />} />
         </Routes>
       </div>
-    </div>
+    </UsuariosProvider>
   );
 }
 
