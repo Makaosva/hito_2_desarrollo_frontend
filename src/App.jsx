@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import InicioSesion from './views/InicioSesion'
+import { useState } from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import InicioSesion from "./views/InicioSesion";
+import NavbarMarket from "./components/NavBarMarket";
+import Registro from "./views/Registro";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<InicioSesion />}/>
-        <Route path="/registro" element={<Registro />}/>
-      </Routes>
+      <NavbarMarket />
+      <div>Productos
+        <Routes>
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/login" element={<InicioSesion />} />
+          <Route path="/registro" element={<Registro/>} />
+        </Routes>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
