@@ -1,65 +1,67 @@
 import { useState } from "react";
+import NavbarMarket from "../components/NavBarMarket";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Home = () => {
-  const [todos, setTodos] = useState([]);
-  const [page, setPage] = useState(1);
-  const [next, setNext] = useState(null);
-  const [previous, setPrevious] = useState(null);
-  const [totalPages, setTotalPages] = useState(1);
-  const [order, setOrder] = useState("asc");
+  // const [todos, setTodos] = useState([]);
+  // const [page, setPage] = useState(1);
+  // const [next, setNext] = useState(null);
+  // const [previous, setPrevious] = useState(null);
+  // const [totalPages, setTotalPages] = useState(1);
+  // const [order, setOrder] = useState("asc");
 
-  const getTodos = async (page = 1, order = "asc", limit = 5) => {
-    const response = await fetch(
-      `${BASE_URL}/todos?page=${page}&limit=${limit}&order=${order}`
-    );
+  // const getTodos = async (page = 1, order = "asc", limit = 5) => {
+  //   const response = await fetch(
+  //     `${BASE_URL}/todos?page=${page}&limit=${limit}&order=${order}`
+  //   );
 
-    const { results, total_pages, next, previous } = await response.json();
-    setTodos(results);
-    setTotalPages(total_pages);
-    setNext(next);
-    setPrevious(previous);
-  };
+  //   const { results, total_pages, next, previous } = await response.json();
+  //   setTodos(results);
+  //   setTotalPages(total_pages);
+  //   setNext(next);
+  //   setPrevious(previous);
+  // };
 
-  useEffect(() => {
-    getTodos(page, order);
-  }, [page, order]);
+  // useEffect(() => {
+  //   getTodos(page, order);
+  // }, [page, order]);
 
-  const addTodo = async (title) => {
-    const response = await fetch(`${BASE_URL}/todos`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title }),
-    });
-    console.log({ response });
-    await response.json();
-    await getTodos();
-  };
+  // const addTodo = async (title) => {
+  //   const response = await fetch(`${BASE_URL}/todos`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ title }),
+  //   });
+  //   console.log({ response });
+  //   await response.json();
+  //   await getTodos();
+  // };
 
-  const removeTodo = async (id) => {
-    const response = await fetch(`${BASE_URL}/todos/${id}`, {
-      method: "DELETE",
-    });
-    if (response.status !== 200) {
-      return alert("Something went wrong");
-    }
-    await getTodos();
-  };
+  // const removeTodo = async (id) => {
+  //   const response = await fetch(`${BASE_URL}/todos/${id}`, {
+  //     method: "DELETE",
+  //   });
+  //   if (response.status !== 200) {
+  //     return alert("Something went wrong");
+  //   }
+  //   await getTodos();
+  // };
 
-  const updateTodo = async (id) => {
-    const response = await fetch(`${BASE_URL}/todos/${id}`, {
-      method: "PUT",
-    });
-    if (response.status !== 200) {
-      return alert("Something went wrong");
-    }
-    await getTodos();
-  };
+  // const updateTodo = async (id) => {
+  //   const response = await fetch(`${BASE_URL}/todos/${id}`, {
+  //     method: "PUT",
+  //   });
+  //   if (response.status !== 200) {
+  //     return alert("Something went wrong");
+  //   }
+  //   await getTodos();
+  // };
 
   return (
     <div className="container">
-      <h1 className="my-5">Todos APP</h1>
+      {/* // <NavbarMarket/> */}
+      {/* <h1 className="my-5">Todos APP</h1>
       <TodoForm addTodo={addTodo} />
       <Todos todos={todos} removeTodo={removeTodo} updateTodo={updateTodo} />
       <TodoFooter
@@ -70,9 +72,9 @@ const Home = () => {
         previous={previous}
         order={order}
         setOrder={setOrder}
-      />
+      /> */}
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

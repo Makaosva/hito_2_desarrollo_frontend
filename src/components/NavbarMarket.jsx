@@ -6,10 +6,12 @@ function NavbarMarket() {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
 
   return (
-    <Navbar bg="secondary" variant="dark" expand="lg">
+    <Navbar bg="black" variant="dark" expand="lg">
       <Navbar.Brand>
-        {" "}
-        <img className="Logo" src="" alt="" />{" "}
+        <Nav.Link as={NavLink} to="/" className={setActiveClass}>
+          {" "}
+          <img src="../Logo.jpeg" alt="Icono" />{" "}
+        </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic_avbar_nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
@@ -19,6 +21,9 @@ function NavbarMarket() {
           </Nav.Link>
           <Nav.Link as={NavLink} to="/login" className={setActiveClass}>
             Login
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/carrito" className={setActiveClass}>
+            🛒
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
