@@ -12,7 +12,11 @@ const MenuLateral = () => {
       name: "Crear Publicación",
       onClick: () => navigate("/crear-publicacion"),
     },
-    { name: "Mis Publicaciones", href: "#" },
+    {
+      name: "Mis Publicaciones",
+      onClick: () => navigate("/mis-publicaciones"),
+    },
+
     { name: "Tienda", href: "#" },
     { name: "Detalle Publicación", href: "#" },
     { name: "Mis Favoritos", href: "#" },

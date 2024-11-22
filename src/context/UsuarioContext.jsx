@@ -9,6 +9,7 @@ const initialStateToken = localStorage.getItem("token") || null;
 const UsuariosProvider = ({ children }) => {
   const [token, setToken] = useState(initialStateToken);
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
+  const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
 
   useEffect(() => {
     if (token) {
@@ -54,6 +55,8 @@ const UsuariosProvider = ({ children }) => {
         setToken,
         activeMenu,
         setActiveMenu,
+        publicaciones,
+        setPublicaciones,
         logout,
       }}
     >
