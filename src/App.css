@@ -1,0 +1,20 @@
+.registroUsuario {
+  /* background-image: url(/imgregistro.jpg); */
+  background-color: rgb(25, 42, 61);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  padding: 5%;
+  text-align: center;
+  align-items: center;
+  color: beige;
+}
+
+.formulario {
+  text-align: end;
+  width: 50%;
+  margin-left: 30%;
+}
