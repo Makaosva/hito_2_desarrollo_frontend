@@ -1,9 +1,16 @@
 // para el perfil
-import React from "react";
+import React, {useContext, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import MenuLateral from "../components/MenuLateral";
+import { UsuarioContext } from "../context/UsuarioContext";
 
 const Perfil = () => {
+  const { setActiveMenu } = useContext(UsuarioContext);
+
+  useEffect(() => {
+    setActiveMenu(null);
+  }, [setActiveMenu]);
+
   return (
     <Container fluid className="mt-5">
       <Row>
