@@ -6,12 +6,11 @@ function NavbarMarket() {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
 
   return (
-    <Navbar bg="danger" variant="dark" expand="lg">
+    <Navbar bg="black" variant="dark" expand="lg">
       <Navbar.Brand>
-        {" "}
-        <img className="Logo" src="" alt="" />{" "}
         <Nav.Link as={NavLink} to="/" className={setActiveClass}>
-          CodeCourse
+          {" "}
+          <img src="../Logo.jpeg" alt="Icono" />{" "}
         </Nav.Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic_avbar_nav" />
