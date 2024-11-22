@@ -22,7 +22,7 @@ const InicioSesion = () => {
   };
 
   return (
-    <Container fluid className="text-center">
+    <Container fluid className="registroUsuario">
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicCorreo">
@@ -45,7 +45,11 @@ const InicioSesion = () => {
             placeholder="Enter your password"
           />
         </Form.Group>
-        <Button variant="primary" onClick={handleGoToProfile}>
+        <Button
+          type="submit"
+          className="btn btn-primary btn-lg boton m-3"
+          onClick={handleGoToProfile}
+        >
           Ir a Mi Perfil
         </Button>
       </Form>
