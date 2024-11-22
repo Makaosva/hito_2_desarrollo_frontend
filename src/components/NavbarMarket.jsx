@@ -17,13 +17,15 @@ function NavbarMarket() {
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/registro" className={setActiveClass}>
-            Register
+            <h3>Register</h3>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/login" className={setActiveClass}>
-            Login
+            <h3>Login</h3>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/carrito" className={setActiveClass}>
-            🛒
+            <h3>
+              <i class="bi bi-cart4"></i>
+            </h3>
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
