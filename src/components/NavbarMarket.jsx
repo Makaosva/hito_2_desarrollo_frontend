@@ -37,10 +37,10 @@ function NavbarMarket() {
                   to="/registro"
                   className={setActiveClass}
                 >
-                  Register
+                  <h3>Register</h3>
                 </Nav.Link>
                 <Nav.Link as={NavLink} to="/login" className={setActiveClass}>
-                  Login
+                  <h3>Login</h3>
                 </Nav.Link>
               </>
             )}
