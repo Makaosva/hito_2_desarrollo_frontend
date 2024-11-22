@@ -1,11 +1,19 @@
-/* import { useContext, useState } from "react";
-import { UsuariosContext } from "../context/UsuarioContext.jsx";
+import { useContext, useState } from "react";
+import { UsuarioContext } from "../context/UsuarioContext.jsx";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Container } from "react-bootstrap";
 
 const InicioSesion = () => {
-  const { loginWithEmailAndPassword } = useContext(UsuariosContext);
+  const navigate = useNavigate();
+  const { loginWithEmailAndPassword } = useContext(UsuarioContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleGoToProfile = () => {
+    navigate("/perfil");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,8 +22,8 @@ const InicioSesion = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Login</h1>
+    <Container fluid className="text-center">
+      <h1 >Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -43,32 +51,10 @@ const InicioSesion = () => {
             placeholder="Enter your password"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <Button variant="primary" onClick={handleGoToProfile}>
+          Ir a Mi Perfil
+        </Button>
       </form>
-    </div>
-  );
-};
-
-export default InicioSesion; */
-
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Button, Container } from "react-bootstrap";
-
-const InicioSesion = () => {
-  const navigate = useNavigate();
-
-  const handleGoToProfile = () => {
-    navigate("/perfil");
-  };
-
-  return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
-      <Button variant="primary" onClick={handleGoToProfile}>
-        Ir a Mi Perfil
-      </Button>
     </Container>
   );
 };

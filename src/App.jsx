@@ -15,7 +15,7 @@ function App() {
     <UsuariosProvider>
       <NavbarMarket />
       <div>
-        Productos
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<InicioSesion />} />
