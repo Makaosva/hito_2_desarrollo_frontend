@@ -1,6 +1,9 @@
-.registroUsuario {
-  /* background-image: url(/imgregistro.jpg); */
+#root{
   background-color: rgb(25, 42, 61);
+  color: beige;
+}
+
+.registroUsuario {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -10,7 +13,6 @@
   padding: 5%;
   text-align: center;
   align-items: center;
-  color: beige;
 }
 
 .formulario {

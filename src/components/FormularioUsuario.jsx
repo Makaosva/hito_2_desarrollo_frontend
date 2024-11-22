@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const FormularioUsuario = ({ setMensaje, setTipo }) => {
+  const navigate = useNavigate();
   // Estados del Formulario
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
   const [errorConfirmar, setErrorConfirmar] = useState("");
+
+  const handleGoToProfile = () => {
+    navigate("/perfil");
+  };
 
   const handleChange = (setter) => (e) => {
     setter(e.target.value);
@@ -95,8 +101,11 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
           />
         </Col>
       </Form.Group>
-
-      <Button type="submit" className="btn btn-primary btn-lg boton">
+      <Button
+        type="submit"
+        className="btn btn-primary btn-lg boton"
+        onClick={handleGoToProfile}
+      >
         Enviar
       </Button>
     </Form>
