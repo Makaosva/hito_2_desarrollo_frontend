@@ -18,7 +18,11 @@ const MenuLateral = () => {
     },
 
     { name: "Tienda", href: "#" },
-    { name: "Detalle Publicación", href: "#" },
+    {
+      name: "Detalle Publicación",
+      onClick: () => navigate("/detalle-publicacion"),
+    },
+
     { name: "Mis Favoritos", href: "#" },
     { name: "Actualizar Perfil", href: "#" },
   ];
