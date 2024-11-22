@@ -25,6 +25,7 @@ const UsuariosProvider = ({ children }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
+    console.log("response-->", response);
 
     const data = await response.json();
     setToken(data.token || null);

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UsuarioContext } from "../context/UsuarioContext.jsx";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 
 const InicioSesion = () => {
   const navigate = useNavigate();
@@ -23,38 +23,32 @@ const InicioSesion = () => {
 
   return (
     <Container fluid className="text-center">
-      <h1 >Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
+      <h1>Login</h1>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formBasicCorreo">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="form-control"
-            placeholder="Enter your email"
+            placeholder="name@example.com"
           />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
             placeholder="Enter your password"
           />
-        </div>
+        </Form.Group>
         <Button variant="primary" onClick={handleGoToProfile}>
           Ir a Mi Perfil
         </Button>
-      </form>
+      </Form>
     </Container>
   );
 };
