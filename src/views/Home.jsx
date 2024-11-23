@@ -5,6 +5,7 @@ import Buscador from "../components/Buscador";
 import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
 import Tienda from "./Tienda";
+import Tienda from "./Tienda";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -30,10 +31,24 @@ const Home = () => {
           <Buscador />
         </Col>
       </Row>
-      
-      <section className="mt-4">
-        <Tienda />
-      </section>
+      <Row>
+        {publicaciones.length > 0 ? (
+          publicaciones.map((pub, index) => (
+            <Col xs={12} md={6} key={index}>
+              <CardPublicacion
+                imagen={pub.imagen}
+                titulo={pub.titulo}
+                descripcion={pub.descripcion}
+                precio={pub.precio}
+                publicadoPor={pub.publicadoPor}
+                mostrarAgregar={false} // para ocultar el boton agregar
+              />
+            </Col>
+          ))
+        ) : (
+          <p>No hay publicaciones disponibles</p>
+        )}
+      </Row>
     </Container>
   );
 };

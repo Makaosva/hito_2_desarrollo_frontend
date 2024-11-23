@@ -9,8 +9,8 @@
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 5%;
+  min-height: 100vh;
+  padding: 2%;
   text-align: center;
   align-items: center;
 }

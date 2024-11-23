@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import MenuLateral from "../components/MenuLateral";
 import { UsuarioContext } from "../context/UsuarioContext";
+import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const CrearPublicacion = () => {
   const { setActiveMenu, setPublicaciones } = useContext(UsuarioContext);
@@ -49,14 +50,19 @@ const CrearPublicacion = () => {
 
   return (
     <Container fluid className="mt-5">
-      <Row>
+      <Row className="p-4">
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
 
         <Col xs={12} md={9}>
           <div className="text-center border p-4 rounded shadow-sm bg-white">
-            <h1 className="mb-4">Crear Publicación</h1>
+            <h1 className="mb-4" style={{ color: "black" }}>
+              Crear Publicación
+            </h1>
+            <p className="text-center p-4" style={{ color: "black" }}>
+              Nombre de Usuario
+            </p>
 
             {/* Formulario */}
             <Form
@@ -64,7 +70,9 @@ const CrearPublicacion = () => {
               className="p-4 bg-light rounded shadow-sm"
             >
               <Form.Group controlId="formImagen" className="mb-3">
-                <Form.Label className="fw-bold">Imagen publicación</Form.Label>
+                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                  Imagen publicación
+                </Form.Label>
                 <Form.Control
                   type="url"
                   name="imagen"
@@ -76,7 +84,9 @@ const CrearPublicacion = () => {
               </Form.Group>
 
               <Form.Group controlId="formTitulo" className="mb-3">
-                <Form.Label className="fw-bold">Título publicación</Form.Label>
+                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                  Título publicación
+                </Form.Label>
                 <Form.Control
                   type="text"
                   name="titulo"
@@ -88,7 +98,7 @@ const CrearPublicacion = () => {
               </Form.Group>
 
               <Form.Group controlId="formDescripcion" className="mb-3">
-                <Form.Label className="fw-bold">
+                <Form.Label className="fw-bold" style={{ color: "black" }}>
                   Descripción publicación
                 </Form.Label>
                 <Form.Control
@@ -103,7 +113,9 @@ const CrearPublicacion = () => {
               </Form.Group>
 
               <Form.Group controlId="formPrecio" className="mb-3">
-                <Form.Label className="fw-bold">Precio</Form.Label>
+                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                  Precio
+                </Form.Label>
                 <Form.Control
                   type="number"
                   name="precio"
@@ -121,6 +133,7 @@ const CrearPublicacion = () => {
           </div>
         </Col>
       </Row>
+      <CerrarSesionButton />
     </Container>
   );
 };
