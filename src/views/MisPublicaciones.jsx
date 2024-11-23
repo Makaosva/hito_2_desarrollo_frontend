@@ -3,6 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import MenuLateral from "../components/MenuLateral";
 import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
+import CerrarSesionButton from "../components/CerrarSesionButton";
+
 
 // La vista Mis Publicaciones se muestra las cards despues de Crear Publicaciones
 const MisPublicaciones = () => {
@@ -13,7 +15,7 @@ const MisPublicaciones = () => {
   }, [setActiveMenu, publicaciones]);
 
   return (
-    <Container fluid className="mt-5">
+    <Container fluid className="mt-5" style={{ minHeight: "100vh" }}>
       <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
@@ -23,6 +25,7 @@ const MisPublicaciones = () => {
           <div className="text-center mb-4">
             <h1 className="border-bottom pb-2">Mis Publicaciones</h1>
           </div>
+          <p className="text-center p-4">Nombre de Usuario</p>
           <Row>
             {publicaciones.length > 0 ? (
               publicaciones.map((pub, index) => (
@@ -43,6 +46,7 @@ const MisPublicaciones = () => {
           </Row>
         </Col>
       </Row>
+      <CerrarSesionButton />
     </Container>
   );
 };

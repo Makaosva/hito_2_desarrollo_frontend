@@ -11,8 +11,8 @@ const Home = () => {
   const { publicaciones } = useContext(UsuarioContext);
 
   return (
-    <Container className="container">
-      <h2>Bienvenidos al MarketPlace de cursos en linea de programacion</h2>
+    <Container className="container d-flex flex-column" style={{ minHeight: "100vh"}}>
+      <h2 className="text-center mb-4">Bienvenidos al MarketPlace de cursos en linea de programacion</h2>
       <Row>
         <Col sm="4">
           <OrdenarPor />
@@ -39,7 +39,7 @@ const Home = () => {
             </Col>
           ))
         ) : (
-          <p>No hay publicaciones disponibles</p>
+          <p className="p-4">No hay publicaciones disponibles</p>
         )}
       </Row>
     </Container>

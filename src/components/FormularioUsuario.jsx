@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const FormularioUsuario = ({ setMensaje, setTipo }) => {
@@ -13,6 +13,10 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
 
   const handleGoToProfile = () => {
     navigate("/perfil");
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
   };
 
   const handleChange = (setter) => (e) => {
@@ -48,67 +52,85 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
   };
 
   return (
-    <Form onSubmit={validarDatos}>
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextName">
-        <Form.Label column sm="4">
-          Nombre
-        </Form.Label>
-        <Col sm="8">
-          <Form.Control
-            type="text"
-            placeholder="Nombre"
-            onChange={handleChange(setNombre)}
-            value={nombre}
-          />
-        </Col>
-      </Form.Group>
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-        <Form.Label column sm="4">
-          Email
-        </Form.Label>
-        <Col sm="8">
-          <Form.Control
-            type="email"
-            placeholder="Email"
-            onChange={handleChange(setEmail)}
-            value={email}
-          />
-        </Col>
-      </Form.Group>
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-        <Form.Label column sm="4">
-          Password
-        </Form.Label>
-        <Col sm="8">
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            onChange={handleChange(setPassword)}
-            value={password}
-          />
-        </Col>
-      </Form.Group>
-      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-        <Form.Label column sm="4">
-          Confirmar Password
-        </Form.Label>
-        <Col sm="8">
-          <Form.Control
-            type="password"
-            placeholder="Confirmar password"
-            onChange={handleChange(setConfirmar)}
-            value={confirmar}
-          />
-        </Col>
-      </Form.Group>
-      <Button
-        type="submit"
-        className="btn btn-primary btn-lg boton"
-        onClick={handleGoToProfile}
-      >
-        Enviar
-      </Button>
-    </Form>
+    <Container
+      className="justify-content-center align-items-center"
+      style={{
+        paddingTop: "50px",
+      }}
+    >
+      <div className="w-100" style={{ maxWidth: "370px" }}>
+        <Form onSubmit={validarDatos}>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextName">
+            <Form.Label column sm="12" className="text-start">
+              Nombre
+            </Form.Label>
+            <Col sm="12">
+              <Form.Control
+                type="text"
+                placeholder="Francisca"
+                onChange={handleChange(setNombre)}
+                value={nombre}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+            <Form.Label column sm="12" className="text-start">
+              Email
+            </Form.Label>
+            <Col sm="12">
+              <Form.Control
+                type="email"
+                placeholder="name@example.com"
+                onChange={handleChange(setEmail)}
+                value={email}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+            <Form.Label column sm="12" className="text-start">
+              Password
+            </Form.Label>
+            <Col sm="12">
+              <Form.Control
+                type="password"
+                placeholder="*******"
+                onChange={handleChange(setPassword)}
+                value={password}
+              />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+            <Form.Label column sm="12" className="text-start">
+              Confirmar Password
+            </Form.Label>
+            <Col sm="12">
+              <Form.Control
+                type="password"
+                placeholder="*******"
+                onChange={handleChange(setConfirmar)}
+                value={confirmar}
+              />
+            </Col>
+          </Form.Group>
+          <div className="d-flex justify-content-center gap-4 pt-4">
+            <Button
+              type="submit"
+              className="btn btn-primary btn-lg"
+              onClick={handleGoToProfile}
+            >
+              Registrarme
+            </Button>
+            <Button
+              type="button"
+              className="btn btn-secondary btn-lg"
+              onClick={handleGoBack}
+            >
+              Volver
+            </Button>
+          </div>
+        </Form>
+      </div>
+    </Container>
   );
 };
 
