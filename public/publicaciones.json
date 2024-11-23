@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "titulo": "Programacion C++",
+    "descipcion": "Curso de programacion en C++",
+    "imagen_url": "https://www.shutterstock.com/image-illustration/c-code-on-dark-background-600nw-1896170293.jpg",
+    "precio": 350000,
+    "usuario_id": 1
+  },
+  {
+    "id": 2,
+    "titulo": "Programacion JavaScript",
+    "descipcion": "Curso de programacion en JavaScript",
+    "imagen_url": "https://blog.interfell.com/hubfs/JavaScript%20un%20lenguaje%20de%20programaci%C3%B3n.jpg",
+    "precio": 390000,
+    "usuario_id": 2
+  }
+]

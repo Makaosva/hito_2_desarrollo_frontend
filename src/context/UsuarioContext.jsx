@@ -10,6 +10,7 @@ const UsuariosProvider = ({ children }) => {
   const [token, setToken] = useState(initialStateToken);
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
   const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
+  const [sortOption, setSortOption] = useState(""); // estado para el sort
 
   useEffect(() => {
     if (token) {
@@ -18,6 +19,16 @@ const UsuariosProvider = ({ children }) => {
       localStorage.removeItem("token");
     }
   }, [token]);
+
+  useEffect(() => {
+    let sortedPublicaciones = [...publicaciones];
+    if (sortOption === "name-asc") {
+      sortedPublicaciones.sort((a, b) => a.titulo.localeCompare(b.titulo));
+    } else if (sortOption === "name-desc") {
+      sortedPublicaciones.sort((a, b) => b.titulo.localeCompare(a.titulo));
+    }
+    setPublicaciones(sortedPublicaciones);
+  }, [sortOption]);
 
   const loginWithEmailAndPassword = async (email, password) => {
     const response = await fetch(BASE_URL, {
@@ -59,6 +70,7 @@ const UsuariosProvider = ({ children }) => {
         publicaciones,
         setPublicaciones,
         logout,
+        setSortOption,
       }}
     >
       {children}

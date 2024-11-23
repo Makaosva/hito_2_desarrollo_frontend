@@ -10,7 +10,7 @@ import DetallePublicacion from "./views/DetallePublicacion";
 import UsuariosProvider from "./context/UsuarioContext";
 import Carrito from "./views/Carrito";
 import Home from "./views/Home";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<InicioSesion />} />
-          <Route path="/registro" element={<RegistroUsuario/>} />
+          <Route path="/registro" element={<RegistroUsuario />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/crear-publicacion" element={<CrearPublicacion />} />
           <Route path="/carrito" element={<Carrito />} />
@@ -28,6 +28,7 @@ function App() {
           <Route path="/detalle-publicacion" element={<DetallePublicacion />} />
         </Routes>
       </div>
+      <Footer />
     </UsuariosProvider>
   );
 }
