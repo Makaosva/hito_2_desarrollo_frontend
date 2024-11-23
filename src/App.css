@@ -1,4 +1,4 @@
-#root{
+#root {
   background-color: rgb(25, 42, 61);
   color: beige;
 }
@@ -9,7 +9,7 @@
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  max-height: 90vh;
+  height: 100%;
   padding: 5%;
   text-align: center;
   align-items: center;
