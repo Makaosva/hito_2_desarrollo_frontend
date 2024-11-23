@@ -13,7 +13,7 @@ const CerrarSesionButton = () => {
   };
 
   return (
-    <div
+    <div className="p-5"
       style={{
         display: "flex",
         justifyContent: "flex-end",
