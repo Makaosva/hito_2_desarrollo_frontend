@@ -10,50 +10,52 @@ const DetallePublicacion = () => {
   const contacto = "example@gmail.com";
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5" style={{ minHeight: "100vh" }}>
       <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
         <Col xs={12} md={9}>
           <div className="text-center border p-4 rounded shadow-sm bg-white">
-            <h1 className="mb-4">Detalle Publicación</h1>
-          <Card
-            className="p-4 shadow-sm"
-            style={{
-              border: "2px solid #000",
-              borderRadius: "10px",
-              display: "flex",
-              flexDirection: "row",
-              alignItem: "center",
-              gap: "1rem",
-            }}
-          >
-            <Card.Img
-              src={imagen}
+            <h1 className="mb-4" style={{ color: "black" }}>
+              Detalle Publicación
+            </h1>
+            <Card
+              className="p-4 shadow-sm"
               style={{
-                width: "100%",
-                maxWidth: "300px",
-                height: "auto",
-                borderRadius: "10px",
                 border: "2px solid #000",
-              }}
-            />
-            <div
-              style={{
+                borderRadius: "10px",
                 display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItem: "flex-end",
-                textAlign: "center",
-                width: "100%",
+                flexDirection: "row",
+                alignItem: "center",
+                gap: "1rem",
               }}
             >
-              <p className="mb-2">Contacto del Publicador</p>
-              <p className="fw-bold text-primary">{contacto}</p>
-            </div>
+              <Card.Img
+                src={imagen}
+                style={{
+                  width: "100%",
+                  maxWidth: "300px",
+                  height: "auto",
+                  borderRadius: "10px",
+                  border: "2px solid #000",
+                }}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItem: "flex-end",
+                  textAlign: "center",
+                  width: "100%",
+                }}
+              >
+                <p className="mb-2">Contacto del Publicador</p>
+                <p className="fw-bold text-primary">{contacto}</p>
+              </div>
             </Card>
-            </div>
+          </div>
         </Col>
       </Row>
     </Container>

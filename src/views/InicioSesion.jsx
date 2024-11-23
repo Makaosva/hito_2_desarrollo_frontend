@@ -15,6 +15,10 @@ const InicioSesion = () => {
     navigate("/perfil");
   };
 
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await loginWithEmailAndPassword(email, password);
@@ -23,7 +27,7 @@ const InicioSesion = () => {
 
   return (
     <Container fluid className="registroUsuario">
-      <h1>Login</h1>
+      <h1 className="p-2">Iniciar Sesión</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicCorreo">
           <Form.Label>Email</Form.Label>
@@ -42,7 +46,7 @@ const InicioSesion = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
+            placeholder="*******"
           />
         </Form.Group>
         <Button
@@ -50,7 +54,14 @@ const InicioSesion = () => {
           className="btn btn-primary btn-lg boton m-3"
           onClick={handleGoToProfile}
         >
-          Ir a Mi Perfil
+          Iniciar Sesión
+        </Button>
+        <Button
+          type="button"
+          className="btn btn-secondary btn-lg"
+          onClick={handleGoBack}
+        >
+          Volver
         </Button>
       </Form>
     </Container>
