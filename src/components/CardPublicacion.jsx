@@ -9,6 +9,7 @@ const CardPublicacion = ({
   descripcion,
   precio,
   publicadoPor,
+  emailUsuario,
   mostrarAgregar = true, // para mostrar o no el boton agregar
 }) => {
   const navigate = useNavigate();
@@ -31,7 +32,10 @@ const CardPublicacion = ({
             variant="secondary"
             onClick={() =>
               navigate("/detalle-publicacion", {
-                state: { imagen },
+                state: {
+                  imagen,
+                  email: emailUsuario,
+                },
               })
             }
           >

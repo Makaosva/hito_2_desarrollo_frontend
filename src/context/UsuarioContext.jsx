@@ -11,6 +11,16 @@ const UsuariosProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
   const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
   const [sortOption, setSortOption] = useState(""); // estado para el sort
+  const [showCerrarSesion, setShowCerrarSesion] = useState(false);
+
+  const handleMenuChange = (menuName) => {
+    setActiveMenu(menuName);
+    if (menuName === "Tienda") {
+      setShowCerrarSesion(true);
+    } else {
+      setShowCerrarSesion(false);
+    }
+  };
 
   useEffect(() => {
     if (token) {
@@ -66,7 +76,9 @@ const UsuariosProvider = ({ children }) => {
         token,
         setToken,
         activeMenu,
-        setActiveMenu,
+        setActiveMenu: handleMenuChange,
+        showCerrarSesion,
+        setShowCerrarSesion,
         publicaciones,
         setPublicaciones,
         logout,

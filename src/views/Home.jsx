@@ -9,7 +9,7 @@ import Tienda from "./Tienda";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Home = () => {
-  const { publicaciones } = useContext(UsuarioContext);
+  const { activeMenu } = useContext(UsuarioContext);
 
   return (
     <Container
@@ -31,7 +31,7 @@ const Home = () => {
         </Col>
       </Row>
 
-      <section className="mt-4">
+      <section className="mt-4 p-4">
         <Tienda />
       </section>
     </Container>

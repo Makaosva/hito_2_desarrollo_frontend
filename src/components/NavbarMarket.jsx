@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { UsuarioContext } from "../context/UsuarioContext";
 
 const shouldHideAuthLinks = (pathname) => {
   // para que se oculte registro y login en estas vistas
@@ -16,13 +17,19 @@ const shouldHideAuthLinks = (pathname) => {
 
 function NavbarMarket() {
   const location = useLocation();
+  const { setActiveMenu } = useContext(UsuarioContext);
+
+  const handleLogoClick = () => {
+    setActiveMenu(""); //resetea el activeMenu al estado inicial
+  };
+
   const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
 
   return (
     <Navbar bg="black" variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand>
-          <Nav.Link as={NavLink} to="/" className={setActiveClass}>
+          <Nav.Link as={NavLink} to="/" onClick={handleLogoClick}>
             {" "}
             <img src="../Logo.jpeg" alt="Icono" />{" "}
           </Nav.Link>

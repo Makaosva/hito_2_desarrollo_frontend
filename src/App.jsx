@@ -11,6 +11,7 @@ import UsuariosProvider from "./context/UsuarioContext";
 import Carrito from "./views/Carrito";
 import Home from "./views/Home";
 import Footer from "./components/Footer";
+import Tienda from "./views/Tienda";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/mis-publicaciones" element={<MisPublicaciones />} />
           <Route path="/detalle-publicacion" element={<DetallePublicacion />} />
+          <Route path="/tienda" element={<Tienda />} />
         </Routes>
       </div>
       <Footer />
