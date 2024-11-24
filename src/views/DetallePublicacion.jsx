@@ -2,12 +2,13 @@ import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import MenuLateral from "../components/MenuLateral";
+import CerrarSesionButton from "../components/CerrarSesionButton";
 
 // despues de crear la publicacion en ver mas se muestra detalle de la publicacion
 const DetallePublicacion = () => {
   const location = useLocation();
-  const { imagen } = location.state || {};
-  const contacto = "example@gmail.com";
+  const { imagen, email } = location.state || {};
+  /* const contacto = "example@gmail.com"; */
 
   return (
     <Container className="mt-5" style={{ minHeight: "100vh" }}>
@@ -52,12 +53,13 @@ const DetallePublicacion = () => {
                 }}
               >
                 <p className="mb-2">Contacto del Publicador</p>
-                <p className="fw-bold text-primary">{contacto}</p>
+                <p className="fw-bold text-primary">{email}</p>
               </div>
             </Card>
           </div>
         </Col>
       </Row>
+      <CerrarSesionButton />
     </Container>
   );
 };
