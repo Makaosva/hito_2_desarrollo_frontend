@@ -3,6 +3,7 @@ import { UsuarioContext } from "../context/UsuarioContext.jsx";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Form } from "react-bootstrap";
+import Login from "../components/Login.jsx";
 
 const InicioSesion = () => {
   const { setUsuario } = useContext(UsuarioContext);
@@ -39,8 +40,8 @@ const InicioSesion = () => {
     <Container fluid className="registroUsuario">
       <h1 className="p-2">Iniciar Sesión</h1>
       <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
+        <Form.Group controlId="formBasicCorreo">
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             id="email"
@@ -49,8 +50,8 @@ const InicioSesion = () => {
             placeholder="name@example.com"
           />
         </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
             id="password"
@@ -62,7 +63,7 @@ const InicioSesion = () => {
         <Button
           type="submit"
           className="btn btn-primary btn-lg boton m-3"
-          /*  onClick={handleGoToProfile} */
+          onClick={handleGoToProfile}
         >
           Iniciar Sesión
         </Button>

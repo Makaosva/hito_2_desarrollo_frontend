@@ -56,28 +56,17 @@ const UsuariosProvider = ({ children }) => {
   }, [sortOption]);
 
   const loginWithEmailAndPassword = async (email, password) => {
-    try {
-      const response = await fetch("/usuario.json");
-      if (!response.ok) {
-        throw new Error("No se pudo obtener los usuarios");
-      }
+    const response = await fetch(BASE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    console.log("response-->", response);
 
-      const usuarios = await response.json();
-      const usuarioValido = usuarios.find(
-        (usuario) => usuario.email === email && usuario.password === password
-      );
+    const data = await response.json();
+    setToken(data.token || null);
 
-      if (usuarioValido) {
-        setUsuario(usuarioValido);
-        localStorage.setItem("usuario", JSON.stringify(usuarioValido));
-        return true;
-      } else {
-        return false;
-      }
-    } catch (error) {
-      console.error("Error al validar usuario", error);
-      return false;
-    }
+    return data;
   };
 
   const registerWithEmailAndPassword = async (email, password) => {
@@ -101,10 +90,6 @@ const UsuariosProvider = ({ children }) => {
   return (
     <UsuarioContext.Provider
       value={{
-        usuario,
-        setUsuario,
-        /*  favoritos,
-        toggleFavorito, */
         loginWithEmailAndPassword,
         registerWithEmailAndPassword,
         token,
@@ -117,6 +102,7 @@ const UsuariosProvider = ({ children }) => {
         setPublicaciones,
         logout,
         setSortOption,
+        getUsuario,
       }}
     >
       {children}

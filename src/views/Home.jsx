@@ -1,4 +1,3 @@
-import { useContext, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import OrdenarPor from "../components/OrdenarPor";
 import Buscador from "../components/Buscador";
@@ -9,13 +8,10 @@ import Tienda from "../components/Tienda";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Home = () => {
-  const { activeMenu } = useContext(UsuarioContext);
+  const { publicaciones } = useContext(UsuarioContext);
 
   return (
-    <Container
-      className="container d-flex flex-column"
-      style={{ minHeight: "100vh" }}
-    >
+    <Container className="d-flex flex-column" style={{ minHeight: "100vh" }}>
       <h2 className="text-center mb-4 p-4">
         Bienvenidos al MarketPlace de cursos en linea de programacion
       </h2>
@@ -31,7 +27,7 @@ const Home = () => {
         </Col>
       </Row>
 
-      <section className="mt-4 p-4">
+      <section className="mt-4">
         <Tienda />
       </section>
     </Container>

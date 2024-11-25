@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import { FaInstagram, FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Container, Row, Col } from "react-bootstrap";
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Footer = () => {
   return (
@@ -29,4 +29,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer
