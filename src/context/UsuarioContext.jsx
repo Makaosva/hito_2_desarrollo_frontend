@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 
 export const UsuarioContext = createContext();
 
@@ -16,6 +16,8 @@ const UsuariosProvider = ({ children }) => {
   const [sortOption, setSortOption] = useState(""); // estado para el sort
   const [showCerrarSesion, setShowCerrarSesion] = useState(false);
   const [usuario, setUsuario] = useState(initialUsuario);
+  const [allPublicaciones, setAllPublicaciones] = useState([]); // Todas las publicaciones
+  const [filteredPublicaciones, setFilteredPublicaciones] = useState([]);
   /* const [favoritos, setFavoritos] = useState([]); */
 
   const logout = () => {

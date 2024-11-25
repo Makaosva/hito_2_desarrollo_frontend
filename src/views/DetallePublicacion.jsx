@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import MenuLateral from "../components/MenuLateral";
 import CerrarSesionButton from "../components/CerrarSesionButton";
+import { UsuarioContext } from "../context/UsuarioContext";
 
 // despues de crear la publicacion en ver mas se muestra detalle de la publicacion
 const DetallePublicacion = () => {
   const location = useLocation();
   const { imagen, email } = location.state || {};
+  const { activeMenu, usuario } = useContext(UsuarioContext); // para vista privada
   /* const contacto = "example@gmail.com"; */
 
   return (
     <Container className="mt-5" style={{ minHeight: "100vh" }}>
-      <Row>
-        <Col xs={12} md={3}>
-          <MenuLateral />
-        </Col>
-        <Col xs={12} md={9}>
+      <Row className="p-4 m-4">
+         {/* elementos visibles en vista privada de detalle de publicaciones  */}
+        {usuario && activeMenu === "DetallePublicacion" && (
+          <Col xs={12} md={3} className="p-4 m-4">
+            <MenuLateral />
+          </Col>
+        )}
+
+        <Col xs={12} md={9} className="d-flex justify-content-end">
           <div className="text-center border p-4 rounded shadow-sm bg-white">
             <h1 className="mb-4" style={{ color: "black" }}>
               Detalle Publicación
