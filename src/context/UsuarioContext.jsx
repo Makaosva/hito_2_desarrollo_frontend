@@ -11,14 +11,17 @@ const UsuariosProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
   const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
   const [sortOption, setSortOption] = useState(""); // estado para el sort
+  const [showCerrarSesion, setShowCerrarSesion] = useState(false);
+  const [usuarios, setUsuarios] = useState([]);
 
-  useEffect(() => {
-    if (token) {
-      localStorage.setItem("token", token);
+  const handleMenuChange = (menuName) => {
+    setActiveMenu(menuName);
+    if (menuName === "Tienda") {
+      setShowCerrarSesion(true);
     } else {
-      localStorage.removeItem("token");
+      setShowCerrarSesion(false);
     }
-  }, [token]);
+  };
 
   useEffect(() => {
     let sortedPublicaciones = [...publicaciones];
@@ -30,19 +33,13 @@ const UsuariosProvider = ({ children }) => {
     setPublicaciones(sortedPublicaciones);
   }, [sortOption]);
 
-  const loginWithEmailAndPassword = async (email, password) => {
-    const response = await fetch(BASE_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    console.log("response-->", response);
-
-    const data = await response.json();
-    setToken(data.token || null);
-
-    return data;
+  const getUsuario = async () => {
+    const res = await fetch("/usuario.json");
+    const data = res.json();
+    setUsuarios(data);
   };
+
+  console.log("usuarios en Context-->", usuarios);
 
   const registerWithEmailAndPassword = async (email, password) => {
     const response = await fetch(BASE_URL, {
@@ -61,16 +58,17 @@ const UsuariosProvider = ({ children }) => {
   return (
     <UsuarioContext.Provider
       value={{
-        loginWithEmailAndPassword,
-        registerWithEmailAndPassword,
         token,
         setToken,
         activeMenu,
-        setActiveMenu,
+        setActiveMenu: handleMenuChange,
+        showCerrarSesion,
+        setShowCerrarSesion,
         publicaciones,
         setPublicaciones,
         logout,
         setSortOption,
+        getUsuario,
       }}
     >
       {children}
