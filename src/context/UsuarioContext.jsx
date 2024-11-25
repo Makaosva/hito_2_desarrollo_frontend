@@ -4,14 +4,43 @@ export const UsuarioContext = createContext();
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-const initialStateToken = localStorage.getItem("token") || null;
+const initialUsuario = JSON.parse(localStorage.getItem("usuario")) || null;
+
+/* const initialStateToken = localStorage.getItem("token") || null; */
 
 const UsuariosProvider = ({ children }) => {
+  const initialStateToken = localStorage.getItem("token") || "";
   const [token, setToken] = useState(initialStateToken);
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
   const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
   const [sortOption, setSortOption] = useState(""); // estado para el sort
   const [showCerrarSesion, setShowCerrarSesion] = useState(false);
+  const [usuario, setUsuario] = useState(initialUsuario);
+  /* const [favoritos, setFavoritos] = useState([]); */
+
+  const logout = () => {
+    setUsuario(null);
+    localStorage.removeItem("usuario");
+  }
+
+  /* const login = (user) => {
+    setUsuario(user);
+  }; */
+
+  /* const logoutt = () => {
+    setUsuario(null); setFavoritos([]);
+  } */
+
+  /* const toggleFavorito = (publicacion) => {
+    setFavoritos((prev) => {
+      const yaEsFavorito = prev.find((fav) => fav.id === publicacion.id);
+      if (yaEsFavorito) {
+        return prev.filter((fav) => fav.id !== publicacion.id)
+      } else {
+        return [...prev, publicacion];
+      }
+    });
+  }; */
 
   const handleMenuChange = (menuName) => {
     setActiveMenu(menuName);
@@ -21,14 +50,6 @@ const UsuariosProvider = ({ children }) => {
       setShowCerrarSesion(false);
     }
   };
-
-  useEffect(() => {
-    if (token) {
-      localStorage.setItem("token", token);
-    } else {
-      localStorage.removeItem("token");
-    }
-  }, [token]);
 
   useEffect(() => {
     let sortedPublicaciones = [...publicaciones];
@@ -41,16 +62,21 @@ const UsuariosProvider = ({ children }) => {
   }, [sortOption]);
 
   const loginWithEmailAndPassword = async (email, password) => {
-    const response = await fetch(BASE_URL, {
+    const response = await fetch(`${BASE_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
     console.log("response-->", response);
 
-    const data = await response.json();
-    setToken(data.token || null);
+    /* const data = await response.json();
+    setToken(data.token || null); */
 
+    const data = await response.json();
+    if (data.token) {
+      setToken(data.token);
+      localStorage.setItem("token", data, token);
+    }
     return data;
   };
 
@@ -64,13 +90,25 @@ const UsuariosProvider = ({ children }) => {
     return data;
   };
 
-  const logout = () => {
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token]);
+
+  /* const logout = () => {
     setToken(null);
-  };
+  }; */
 
   return (
     <UsuarioContext.Provider
       value={{
+        usuario,
+        setUsuario,
+       /*  favoritos,
+        toggleFavorito, */
         loginWithEmailAndPassword,
         registerWithEmailAndPassword,
         token,

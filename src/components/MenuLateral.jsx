@@ -38,7 +38,10 @@ const MenuLateral = () => {
       onClick: () => navigate("/detalle-publicacion"),
     },
 
-    { name: "Mis Favoritos", href: "#" },
+    {
+      name: "Mis Favoritos",
+      onClick: () => navigate("/favoritos"),
+    },
     { name: "Actualizar Perfil", href: "#" },
   ];
 
