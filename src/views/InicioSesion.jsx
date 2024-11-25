@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UsuarioContext } from "../context/UsuarioContext.jsx";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,49 +6,32 @@ import { Button, Container, Form } from "react-bootstrap";
 
 const InicioSesion = () => {
   const { setUsuario } = useContext(UsuarioContext);
+  const { usuario } = useContext(UsuarioContext);
   const navigate = useNavigate();
   const { loginWithEmailAndPassword } = useContext(UsuarioContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  /* const handleGoToProfile = () => {
-    navigate("/perfil");
-  }; */
+  useEffect(() => {
+    if (usuario) {
+      navigate("/perfil");
+    }
+  }, [usuario, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   /*  const response = await loginWithEmailAndPassword(email, password);
-    alert(response?.message || "Something went wrong"); */
-    try {
-      const response = await fetch("/usuario.json");
+    const isLoggedIn = await loginWithEmailAndPassword(email, password);
 
-      if (!response.ok) {
-        throw new Error("No se pudo obtener los usuarios")
-      }
-
-      const usuarios = await response.json();
-
-      const usuarioValido = usuarios.find(
-        (usuario) => usuario.email === email && usuario.password === password
-      );
-
-      if (usuarioValido) {
-        alert("Inicio de Sesión exitoso");
-        localStorage.setItem("usuario", JSON.stringify(usuarioValido));
-        setUsuario(usuarioValido);
-        loginWithEmailAndPassword(usuarioValido.email, usuarioValido.password);
-        navigate("/perfil");
-      } else {
-        alert("Credenciales inválidas");
-      }
-    } catch (error) {
-      console.error("Error al validar usuario", error);
-      alert("Ocurrió un error en el inicio de sesión")
+    if (isLoggedIn) {
+      alert("Inicio de sesión exitoso");
+      navigate("/perfil");
+    } else {
+      alert("Credenciales inválidas");
     }
-};
+  };
 
-const handleGoBack = () => {
+  const handleGoBack = () => {
     navigate(-1);
   };
 
@@ -79,7 +62,7 @@ const handleGoBack = () => {
         <Button
           type="submit"
           className="btn btn-primary btn-lg boton m-3"
-         /*  onClick={handleGoToProfile} */
+          /*  onClick={handleGoToProfile} */
         >
           Iniciar Sesión
         </Button>

@@ -4,7 +4,7 @@ import OrdenarPor from "../components/OrdenarPor";
 import Buscador from "../components/Buscador";
 import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
-import Tienda from "./Tienda";
+import Tienda from "../components/Tienda";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 

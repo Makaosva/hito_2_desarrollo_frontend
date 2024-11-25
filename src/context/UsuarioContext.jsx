@@ -21,15 +21,7 @@ const UsuariosProvider = ({ children }) => {
   const logout = () => {
     setUsuario(null);
     localStorage.removeItem("usuario");
-  }
-
-  /* const login = (user) => {
-    setUsuario(user);
-  }; */
-
-  /* const logoutt = () => {
-    setUsuario(null); setFavoritos([]);
-  } */
+  };
 
   /* const toggleFavorito = (publicacion) => {
     setFavoritos((prev) => {
@@ -62,22 +54,28 @@ const UsuariosProvider = ({ children }) => {
   }, [sortOption]);
 
   const loginWithEmailAndPassword = async (email, password) => {
-    const response = await fetch(`${BASE_URL}/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    console.log("response-->", response);
+    try {
+      const response = await fetch("/usuario.json");
+      if (!response.ok) {
+        throw new Error("No se pudo obtener los usuarios");
+      }
 
-    /* const data = await response.json();
-    setToken(data.token || null); */
+      const usuarios = await response.json();
+      const usuarioValido = usuarios.find(
+        (usuario) => usuario.email === email && usuario.password === password
+      );
 
-    const data = await response.json();
-    if (data.token) {
-      setToken(data.token);
-      localStorage.setItem("token", data, token);
+      if (usuarioValido) {
+        setUsuario(usuarioValido);
+        localStorage.setItem("usuario", JSON.stringify(usuarioValido));
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.error("Error al validar usuario", error);
+      return false;
     }
-    return data;
   };
 
   const registerWithEmailAndPassword = async (email, password) => {
@@ -98,16 +96,12 @@ const UsuariosProvider = ({ children }) => {
     }
   }, [token]);
 
-  /* const logout = () => {
-    setToken(null);
-  }; */
-
   return (
     <UsuarioContext.Provider
       value={{
         usuario,
         setUsuario,
-       /*  favoritos,
+        /*  favoritos,
         toggleFavorito, */
         loginWithEmailAndPassword,
         registerWithEmailAndPassword,
