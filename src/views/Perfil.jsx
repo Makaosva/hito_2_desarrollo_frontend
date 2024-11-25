@@ -25,6 +25,7 @@ const Perfil = () => {
           <div className="text-center border p-4 rounded shadow-sm bg-white">
             <h1 style={{ color: "black" }}>Mi Perfil</h1>
           </div>
+          {/* para que se muestre nombre de usuario */}
           <p className="text-center p-4">{usuario?.nombre}</p>
         </Col>
       </Row>

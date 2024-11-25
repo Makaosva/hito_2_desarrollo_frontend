@@ -8,7 +8,7 @@ import CerrarSesionButton from "../components/CerrarSesionButton";
 
 // La vista Mis Publicaciones se muestra las cards despues de Crear Publicaciones
 const MisPublicaciones = () => {
-  const { publicaciones, setActiveMenu } = useContext(UsuarioContext);
+  const { publicaciones, setActiveMenu, usuario } = useContext(UsuarioContext);
 
   useEffect(() => {
     setActiveMenu("Mis Publicaciones");
@@ -25,7 +25,7 @@ const MisPublicaciones = () => {
           <div className="text-center mb-4">
             <h1 className="border-bottom pb-2">Mis Publicaciones</h1>
           </div>
-          <p className="text-center p-4">Nombre de Usuario</p>
+          <p className="text-center p-4">{usuario?.nombre}</p>
           <Row>
             {publicaciones.length > 0 ? (
               publicaciones.map((pub, index) => (

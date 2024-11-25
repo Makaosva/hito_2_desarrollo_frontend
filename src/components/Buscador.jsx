@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { UsuarioContext } from "../context/UsuarioContext";
 
 const Buscador = () => {
-  const { publicaciones, setPublicaciones } = useContext(UsuarioContext)
+  const { publicaciones, setPublicaciones } = useContext(UsuarioContext);
   return (
     <Form.Control
       type="text"

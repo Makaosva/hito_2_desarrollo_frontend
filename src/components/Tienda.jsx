@@ -3,11 +3,16 @@ import { Col, Container, Row } from "react-bootstrap";
 import CardPublicacion from "../components/CardPublicacion";
 import CerrarSesionButton from "../components/CerrarSesionButton";
 import { UsuarioContext } from "../context/UsuarioContext";
+import MenuLateral from "./MenuLateral";
+import OrdenarPor from "../components/OrdenarPor";
+import Buscador from "../components/Buscador";
 
 const Tienda = (showCerrarSesion) => {
   const [publicaciones, setPublicaciones] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
-  const { activeMenu } = useContext(UsuarioContext);
+  const { activeMenu, usuario } = useContext(UsuarioContext); // para vista privada
+  const { filteredPublicaciones, cargarPublicaciones } =
+    useContext(UsuarioContext);
 
   useEffect(() => {
     // cargar publicaciones
@@ -33,9 +38,29 @@ const Tienda = (showCerrarSesion) => {
   });
 
   return (
-    <Container className="mt-4 p-4">
+    <Container className="mt-3 p-2">
+      <Buscador />
       <h3 className="text-center mb-4">Tienda</h3>
       <Row>
+        {/* elementos visibles en vista privada de la tienda */}
+        {usuario && activeMenu === "Tienda" && (
+          <>
+            <Col xs={12} md={3}>
+              <MenuLateral />
+            </Col>
+            <Col xs={12} md={3}>
+              <p className="text-center p-2">{usuario?.nombre}</p>
+            </Col>
+            <Row>
+              <Col sm="6" className="p-3">
+                <OrdenarPor />
+              </Col>
+              <Col sm="6" className="p-3">
+                <Buscador />
+              </Col>
+            </Row>
+          </>
+        )}
         {publicacionesConNombre.length > 0 ? (
           publicacionesConNombre.map((pub, index) => (
             <Col xs={12} md={6} lg={4} key={index}>
