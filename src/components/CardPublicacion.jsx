@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Card, Button } from "react-bootstrap";
-import { BsStar } from "react-icons/bs";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { UsuarioContext } from "../context/UsuarioContext";
 
 const CardPublicacion = ({
+  /* id, */
   imagen,
   titulo,
   descripcion,
@@ -13,6 +15,9 @@ const CardPublicacion = ({
   mostrarAgregar = true, // para mostrar o no el boton agregar
 }) => {
   const navigate = useNavigate();
+  /* const { favoritos, toggleFavorito } = useContext(UsuarioContext);
+
+  const esFavorito = favoritos.some((fav) => fav.id === id); */
 
   return (
     <Card className="mb-3 shadow-sm">
@@ -41,8 +46,14 @@ const CardPublicacion = ({
           >
             Ver Más
           </Button>
-          <BsStar style={{ fontSize: "1.5rem", color: "black" }} />
-        </div>
+        {/*   <div onClick={() => toggleFavorito({ id, titulo, imagen, publicadoPor })}>
+            {esFavorito ? (
+              <BsStarFill style={{ fontSize: "1.5rem", color: "blue" }} />
+            ) : ( */}
+              <BsStar style={{ fontSize: "1.5rem", color: "black" }} />
+           {/*  )}
+          </div> */}
+          </div>
       </Card.Body>
     </Card>
   );
