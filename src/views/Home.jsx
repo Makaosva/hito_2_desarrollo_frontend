@@ -1,9 +1,15 @@
 import { Col, Container, Row } from "react-bootstrap";
 import OrdenarPor from "../components/OrdenarPor";
 import Buscador from "../components/Buscador";
-import Tienda from "./Tienda";
+import CardPublicacion from "../components/CardPublicacion";
+import { UsuarioContext } from "../context/UsuarioContext";
+import Tienda from "../components/Tienda";
+
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Home = () => {
+  const { publicaciones } = useContext(UsuarioContext);
+
   return (
     <Container className="d-flex flex-column" style={{ minHeight: "100vh" }}>
       <h2 className="text-center mb-4 p-4">
@@ -20,6 +26,7 @@ const Home = () => {
           <Buscador />
         </Col>
       </Row>
+
       <section className="mt-4">
         <Tienda />
       </section>

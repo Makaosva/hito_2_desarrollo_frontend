@@ -11,6 +11,8 @@ import UsuariosProvider from "./context/UsuarioContext";
 import Carrito from "./views/Carrito";
 import Home from "./views/Home";
 import Footer from "./components/Footer";
+import Tienda from "./components/Tienda";
+import RutaPrivada from "./components/RutaPrivada";
 
 function App() {
   return (
@@ -18,14 +20,39 @@ function App() {
       <NavbarMarket />
       <div>
         <Routes>
+          {/* Ruta pública para todos */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<RegistroUsuario />} />
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="/crear-publicacion" element={<CrearPublicacion />} />
+
           <Route path="/carrito" element={<Carrito />} />
-          <Route path="/mis-publicaciones" element={<MisPublicaciones />} />
           <Route path="/detalle-publicacion" element={<DetallePublicacion />} />
+          <Route path="/tienda" element={<Tienda />} />
+          {/* Ruta privada solo para usuarios autenticados */}
+          <Route
+            path="/perfil"
+            element={
+              <RutaPrivada>
+                <Perfil />
+              </RutaPrivada>
+            }
+          />
+          <Route
+            path="/crear-publicacion"
+            element={
+              <RutaPrivada>
+                <CrearPublicacion />
+              </RutaPrivada>
+            }
+          />
+          <Route
+            path="/mis-publicaciones"
+            element={
+              <RutaPrivada>
+                <MisPublicaciones />
+              </RutaPrivada>
+            }
+          />
         </Routes>
       </div>
       <Footer />

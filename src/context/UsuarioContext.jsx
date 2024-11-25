@@ -1,18 +1,40 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 
 export const UsuarioContext = createContext();
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
-const initialStateToken = localStorage.getItem("token") || null;
+const initialUsuario = JSON.parse(localStorage.getItem("usuario")) || null;
+
+/* const initialStateToken = localStorage.getItem("token") || null; */
 
 const UsuariosProvider = ({ children }) => {
+  const initialStateToken = localStorage.getItem("token") || "";
   const [token, setToken] = useState(initialStateToken);
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
   const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
   const [sortOption, setSortOption] = useState(""); // estado para el sort
   const [showCerrarSesion, setShowCerrarSesion] = useState(false);
-  const [usuarios, setUsuarios] = useState([]);
+  const [usuario, setUsuario] = useState(initialUsuario);
+  const [allPublicaciones, setAllPublicaciones] = useState([]); // Todas las publicaciones
+  const [filteredPublicaciones, setFilteredPublicaciones] = useState([]);
+  /* const [favoritos, setFavoritos] = useState([]); */
+
+  const logout = () => {
+    setUsuario(null);
+    localStorage.removeItem("usuario");
+  };
+
+  /* const toggleFavorito = (publicacion) => {
+    setFavoritos((prev) => {
+      const yaEsFavorito = prev.find((fav) => fav.id === publicacion.id);
+      if (yaEsFavorito) {
+        return prev.filter((fav) => fav.id !== publicacion.id)
+      } else {
+        return [...prev, publicacion];
+      }
+    });
+  }; */
 
   const handleMenuChange = (menuName) => {
     setActiveMenu(menuName);
@@ -33,13 +55,19 @@ const UsuariosProvider = ({ children }) => {
     setPublicaciones(sortedPublicaciones);
   }, [sortOption]);
 
-  const getUsuario = async () => {
-    const res = await fetch("/usuario.json");
-    const data = res.json();
-    setUsuarios(data);
-  };
+  const loginWithEmailAndPassword = async (email, password) => {
+    const response = await fetch(BASE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    console.log("response-->", response);
 
-  console.log("usuarios en Context-->", usuarios);
+    const data = await response.json();
+    setToken(data.token || null);
+
+    return data;
+  };
 
   const registerWithEmailAndPassword = async (email, password) => {
     const response = await fetch(BASE_URL, {
@@ -51,13 +79,19 @@ const UsuariosProvider = ({ children }) => {
     return data;
   };
 
-  const logout = () => {
-    setToken(null);
-  };
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token]);
 
   return (
     <UsuarioContext.Provider
       value={{
+        loginWithEmailAndPassword,
+        registerWithEmailAndPassword,
         token,
         setToken,
         activeMenu,

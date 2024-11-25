@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Nav } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { UsuarioContext } from "../context/UsuarioContext";
 
 const MenuLateral = () => {
-  const { activeMenu, setActiveMenu } = useContext(UsuarioContext);
+  const { activeMenu, setActiveMenu, setShowCerrarSesion } =
+    useContext(UsuarioContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (activeMenu === "Home") {
+      setShowCerrarSesion(false);
+    }
+  }, [activeMenu, setShowCerrarSesion]);
 
   const menuItems = [
     {
@@ -17,13 +24,24 @@ const MenuLateral = () => {
       onClick: () => navigate("/mis-publicaciones"),
     },
 
-    { name: "Tienda", href: "#" },
+    {
+      name: "Tienda",
+      onClick: () => {
+        setActiveMenu("Tienda");
+        /* setShowCerrarSesion(true); */
+        navigate("/tienda");
+      },
+    },
+
     {
       name: "Detalle Publicación",
       onClick: () => navigate("/detalle-publicacion"),
     },
 
-    { name: "Mis Favoritos", href: "#" },
+    {
+      name: "Mis Favoritos",
+      onClick: () => navigate("/favoritos"),
+    },
     { name: "Actualizar Perfil", href: "#" },
   ];
 

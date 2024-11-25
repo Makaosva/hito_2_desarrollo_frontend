@@ -5,7 +5,7 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const CrearPublicacion = () => {
-  const { setActiveMenu, setPublicaciones } = useContext(UsuarioContext);
+  const { setActiveMenu, setPublicaciones, usuario } = useContext(UsuarioContext);
   const [formData, setFormData] = useState({
     imagen: "",
     titulo: "",
@@ -47,7 +47,7 @@ const CrearPublicacion = () => {
       [name]: value,
     }));
   };
-
+ <p className="text-center p-4">{usuario?.nombre}</p>;
   return (
     <Container fluid className="mt-5">
       <Row className="p-4">
@@ -61,7 +61,7 @@ const CrearPublicacion = () => {
               Crear Publicación
             </h1>
             <p className="text-center p-4" style={{ color: "black" }}>
-              Nombre de Usuario
+              {usuario?.nombre}
             </p>
 
             {/* Formulario */}
