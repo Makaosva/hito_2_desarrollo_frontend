@@ -6,13 +6,13 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import CerrarSesionButton from "../components/CerrarSesionButton";
 
 
-// La vista Mis Publicaciones se muestra las cards despues de Crear Publicaciones
 const MisPublicaciones = () => {
-  const { publicaciones, setActiveMenu, usuario } = useContext(UsuarioContext);
+  const { MisPublicaciones, setActiveMenu} = useContext(UsuarioContext);
 
   useEffect(() => {
     setActiveMenu("Mis Publicaciones");
-  }, [setActiveMenu, publicaciones]);
+  }, [setActiveMenu]);
+
 
   return (
     <Container
@@ -27,19 +27,19 @@ const MisPublicaciones = () => {
 
         <Col xs={12} md={9}>
           <div className="text-center p-2">
-            <h3 className="border-bottom p-2">Mis Publicaciones</h3>
+            <h4 className="border-bottom p-2">Mis Publicaciones</h4>
           </div>
-          <p className="text-center p-2">{usuario?.nombre}</p>
+          <p className="text-center">Usuario_actual</p>
           <Row>
-            {publicaciones.length > 0 ? (
-              publicaciones.map((pub, index) => (
+            {MisPublicaciones.length > 0 ? (
+              MisPublicaciones.map((pub, index) => (
                 <Col xs={12} md={6} key={index}>
                   <CardPublicacion
-                    imagen={pub.imagen}
+                    imagen={pub.imagen_url}
                     titulo={pub.titulo}
                     descripcion={pub.descripcion}
                     precio={pub.precio}
-                    publicadoPor={pub.publicadoPor}
+                    publicadoPor="Usuario_actual"
                     mostrarAgregar={false} // para ocultar el boton agregar
                   />
                 </Col>

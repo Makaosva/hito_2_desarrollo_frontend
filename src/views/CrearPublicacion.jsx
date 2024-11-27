@@ -5,8 +5,7 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const CrearPublicacion = () => {
-  const { setActiveMenu, setPublicaciones, usuario } =
-    useContext(UsuarioContext);
+  const { setActiveMenu } = useContext(UsuarioContext);
   const [formData, setFormData] = useState({
     imagen: "",
     titulo: "",
@@ -15,21 +14,13 @@ const CrearPublicacion = () => {
   });
 
   useEffect(() => {
-    setActiveMenu("Crear Publicación");
+    setActiveMenu("Crear Publicacion");
   }, [setActiveMenu]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const nuevaPublicacion = {
-      ...formData,
-      publicadoPor: "Usuario actual",
-    };
-
-    setPublicaciones((prev) => {
-      const updatedPublicaciones = [...prev, nuevaPublicacion];
-      return updatedPublicaciones;
-    });
+    alert("Publicación creada");
 
     setFormData({
       imagen: "",
@@ -37,9 +28,20 @@ const CrearPublicacion = () => {
       descripcion: "",
       precio: "",
     });
-
-    alert("Publicación creada");
   };
+
+  const nuevaPublicacion = {
+    ...formData,
+    publicadoPor: "Usuario actual",
+  };
+
+  /* setPublicaciones((prev) => {
+    const updatedPublicaciones = [...prev, nuevaPublicacion];
+    return updatedPublicaciones;
+  });
+  const { MisPublicaciones, setMisPublicaciones } = useContext(UsuarioContext)
+  setPublicaciones((prev) => [...prev, nuevaPublicacion]); */
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,18 +63,19 @@ const CrearPublicacion = () => {
         </Col>
 
         <Col xs={12} md={9} className="d-flex justify-content-center p-4">
-          <div className="text-center border rounded shadow-sm bg-white mt-2 w-50">
+          <div className="text-center border rounded shadow-sm bg-white w-50">
             <h4 className="mb-2" style={{ color: "black" }}>
               Crear Publicación
             </h4>
             <p className="text-center" style={{ color: "black" }}>
-              {usuario?.nombre}
+              Usuario_actual
             </p>
 
             {/* Formulario */}
             <Form
               onSubmit={handleSubmit}
-              className="bg-light rounded shadow-sm p-5"
+              className="bg-light rounded shadow-sm p-4"
+              style={{ maxWidth: "300px", margin: "auto" }}
             >
               <Form.Group controlId="formImagen" className="mb-2">
                 <Form.Label className="fw-bold" style={{ color: "black" }}>
@@ -131,14 +134,16 @@ const CrearPublicacion = () => {
                 />
               </Form.Group>
 
-              <Button variant="dark" type="submit" clasName="w-100">
+              <Button variant="dark" type="submit" className="w-50">
                 Publicar
               </Button>
             </Form>
           </div>
         </Col>
       </Row>
-      <CerrarSesionButton />
+      <Row className="d-flex justify-content-end">
+        <CerrarSesionButton />
+      </Row>
     </Container>
   );
 };

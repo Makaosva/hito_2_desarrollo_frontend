@@ -36,7 +36,10 @@ const InicioSesion = () => {
   };
 
   return (
-    <Container fluid className="registroUsuario">
+    <Container
+      className="registroUsuario"
+      style={{ height: "calc(100vh - 140px)" }}
+    >
       <h1 className="p-2">Iniciar Sesión</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group>

@@ -55,12 +55,12 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
     <Container
       className="justify-content-center align-items-center"
       style={{
-        paddingTop: "50px",
+        paddingTop: "10px",
       }}
     >
-      <div className="w-100" style={{ maxWidth: "370px" }}>
+      <div className="w-75" style={{ maxWidth: "300px" }}>
         <Form onSubmit={validarDatos}>
-          <Form.Group as={Row} className="mb-3" controlId="formPlaintextName">
+          <Form.Group as={Row} className="mb-2" controlId="formPlaintextName">
             <Form.Label column sm="12" className="text-start">
               Nombre
             </Form.Label>
@@ -73,7 +73,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
               />
             </Col>
           </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+          <Form.Group as={Row} className="mb-2" controlId="formPlaintextEmail">
             <Form.Label column sm="12" className="text-start">
               Email
             </Form.Label>
@@ -86,7 +86,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
               />
             </Col>
           </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+          <Form.Group as={Row} className="mb-2" controlId="formPlaintextEmail">
             <Form.Label column sm="12" className="text-start">
               Password
             </Form.Label>
@@ -99,7 +99,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
               />
             </Col>
           </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+          <Form.Group as={Row} className="mb-2" controlId="formPlaintextEmail">
             <Form.Label column sm="12" className="text-start">
               Confirmar Password
             </Form.Label>
@@ -112,7 +112,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
               />
             </Col>
           </Form.Group>
-          <div className="d-flex justify-content-center gap-4 pt-4">
+          <div className="d-flex justify-content-center gap-4 pt-2">
             <Button
               type="submit"
               className="btn btn-primary btn-lg"

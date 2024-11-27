@@ -62,6 +62,14 @@ function App() {
               </RutaPrivada>
             }
           />
+          <Route
+            path="/actualizar-perfil"
+            element={
+              <RutaPrivada>
+               {/*  <ActualizarPerfil /> */}
+              </RutaPrivada>
+            }
+          />
         </Routes>
       </div>
       <Footer />

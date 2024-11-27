@@ -11,11 +11,13 @@ const shouldHideAuthLinks = (pathname) => {
     "/perfil",
     "/crear-publicacion",
     "/mis-publicaciones",
-    "/detalle-publicacion",
+    /*  "/detalle-publicacion", */
     "/login",
     "/registro",
     "/tienda",
     "/carrito",
+    "/mis-favoritos",
+    "/actualizar-perfil",
   ];
   return hiddenRoutes.some((route) => pathname.startsWith(route));
 };
@@ -47,20 +49,25 @@ function NavbarMarket() {
           md={3}
           className="menu-lateral-container"
           style={{
-            position: "absolute", // Position the menu absolutely
-            top: "50%", // Position it vertically at the center of the screen
-            transform: "translateY(-50%)", // Adjust the position to be centered
-            left: "0", // Align it to the left side of the screen
-            zIndex: 999, // Ensure it's on top of other elements
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+            left: "0",
+            zIndex: 999,
           }}
         >
-          <MenuLateral />
+          {/*    <MenuLateral /> */}
         </Col>
       )}
 
       {/* Contenido principal */}
       <div className="flex-grow-1">
-        <Navbar bg="black" variant="dark" expand="lg" style={{ height: "70px" }}>
+        <Navbar
+          bg="black"
+          variant="dark"
+          expand="lg"
+          style={{ height: "70px" }}
+        >
           <Container fluid>
             <Navbar.Brand>
               <Nav.Link as={NavLink} to="/" onClick={handleLogoClick}>
@@ -75,7 +82,6 @@ function NavbarMarket() {
               <Nav className="mr-auto">
                 {/* Mostrar el menu en detalle-publicacion */}
                 {isDetallePublicacion(location.pathname) ? (
-                  // Mostrar Registro, Login y Carrito en /detalle-publicacion (siempre)
                   <>
                     <Nav.Link
                       as={NavLink}
@@ -100,7 +106,6 @@ function NavbarMarket() {
                     </Nav.Link>
                   </>
                 ) : (
-                  // Para otras vistas
                   <>
                     {!shouldHideAuthLinks(location.pathname) && (
                       <>

@@ -15,10 +15,12 @@ const CerrarSesionButton = () => {
   // para que se muestre cerrar sesion en peril con sus opciones
   if (
     activeMenu !== "Perfil" &&
-    activeMenu !== "Crear Publicación" &&
+    activeMenu !== "Crear Publicacion" &&
     activeMenu !== "Mis Publicaciones" &&
     activeMenu !== "Tienda" &&
-    activeMenu !== "Detalle Publicacion"
+    activeMenu !== "Detalle Publicacion" &&
+    activeMenu !== "Mis Favoritos" &&
+    activeMenu !== "Actualizar Perfil"
   ) {
     return null;
   }

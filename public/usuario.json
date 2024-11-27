@@ -10,5 +10,18 @@
     "nombre": "Carolina Castillo",
     "password": "1234567",
     "email": "carcastillos@gmail.com"
+  },
+  {
+    "id": 3,
+    "nombre": "Francisco Morales",
+    "password": "12345678",
+    "email": "programador1@gmail.com"
+  },
+  {
+    "id": 4,
+    "nombre": "Richard Muñoz",
+    "password": "123456789",
+    "email": "programador2@gmail.com"
   }
+  
 ]

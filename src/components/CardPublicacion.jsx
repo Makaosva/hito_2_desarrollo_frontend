@@ -15,13 +15,31 @@ const CardPublicacion = ({
   mostrarAgregar = true, // para mostrar o no el boton agregar
   handleVermasClick, // Agregamos esta prop
   isPrivate = false, // Indicamos si es una vista privada
+  esFavorito = false,
 }) => {
   const navigate = useNavigate();
 
-  const handleVerMas = () => {
+  /* const handleVerMas = () => {
     if (isPrivate && handleVermasClick) {
       handleVermasClick(); // Llama la función de cierre en la vista privada
     }
+    navigate("/detalle-publicacion", {
+      state: {
+        imagen,
+        email: emailUsuario,
+      },
+    });
+  };
+ */
+  const handleAgregarAlCarrito = () => {
+    navigate("/carrito");
+  };
+
+  /* const handleverMas = () => {
+    navigate("/detalle-publicacion");
+  }; */
+
+  const handleverMas = () => {
     navigate("/detalle-publicacion", {
       state: {
         imagen,
@@ -43,17 +61,32 @@ const CardPublicacion = ({
           <strong>Publicado por:</strong> {publicadoPor}
         </Card.Text>
         <div className="d-flex justify-content-between">
-          {mostrarAgregar && <Button variant="primary">Agregar</Button>}
-          <Button variant="secondary" onClick={handleVerMas}>
+          {mostrarAgregar && (
+            <Button variant="primary" onClick={handleAgregarAlCarrito}>
+              Agregar
+            </Button>
+          )}
+          <Button variant="secondary" onClick={handleverMas}>
             Ver Más
           </Button>
-          <BsStar
-            style={{
-              fontSize: "1.5rem",
-              color: "blue", // Cambia el color dinámicamente
-              cursor: "pointer",
-            }}
-          />
+
+          {esFavorito ? (
+            <BsStarFill
+              style={{
+                fontSize: "1.5rem",
+                color: "blue",
+                cursor: "pointer",
+              }}
+            />
+          ) : (
+            <BsStar
+              style={{
+                fontSize: "1.5rem",
+                color: "blue",
+                cursor: "pointer",
+              }}
+            />
+          )}
         </div>
       </Card.Body>
     </Card>
