@@ -24,7 +24,7 @@ const shouldHideAuthLinks = (pathname) => {
 
 const shouldHideCartLinks = (pathname) => {
   // para que se oculte solo el carrito en estas vistas
-  const hiddenRoutesForCart = ["/login", "/registro", "/carrito"];
+  const hiddenRoutesForCart = ["/login", "/registro", "/carrito", "/actualizar-perfil"];
   return hiddenRoutesForCart.some((route) => pathname.startsWith(route));
 };
 

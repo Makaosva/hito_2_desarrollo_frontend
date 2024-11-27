@@ -30,18 +30,16 @@ const CrearPublicacion = () => {
     });
   };
 
-  const nuevaPublicacion = {
+  /* const nuevaPublicacion = {
     ...formData,
     publicadoPor: "Usuario actual",
   };
-
-  /* setPublicaciones((prev) => {
+  setPublicaciones((prev) => {
     const updatedPublicaciones = [...prev, nuevaPublicacion];
     return updatedPublicaciones;
   });
-  const { MisPublicaciones, setMisPublicaciones } = useContext(UsuarioContext)
+  const { MisPublicaciones, setMisPublicaciones } = useContext(UsuarioContext);
   setPublicaciones((prev) => [...prev, nuevaPublicacion]); */
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

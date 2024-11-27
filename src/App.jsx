@@ -10,6 +10,7 @@ import DetallePublicacion from "./views/DetallePublicacion";
 import UsuariosProvider from "./context/UsuarioContext";
 import Carrito from "./views/Carrito";
 import Home from "./views/Home";
+import ActualizarPerfil from "./views/ActualizarPerfil";
 import Footer from "./components/Footer";
 import Tienda from "./components/Tienda";
 import RutaPrivada from "./components/RutaPrivada";
@@ -66,7 +67,7 @@ function App() {
             path="/actualizar-perfil"
             element={
               <RutaPrivada>
-               {/*  <ActualizarPerfil /> */}
+                <ActualizarPerfil />
               </RutaPrivada>
             }
           />
