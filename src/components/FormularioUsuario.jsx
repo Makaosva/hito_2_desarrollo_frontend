@@ -11,12 +11,8 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
   const [confirmar, setConfirmar] = useState("");
   const [errorConfirmar, setErrorConfirmar] = useState("");
 
-  const handleGoToProfile = () => {
-    navigate("/perfil");
-  };
-
   const handleGoBack = () => {
-    navigate("/");
+    navigate("/login");
   };
 
   const handleChange = (setter) => (e) => {
@@ -28,28 +24,26 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
   const validarDatos = (e) => {
     e.preventDefault();
 
-    // Validación de campos vacíos
-    if (nombre === "" || email === "" || password === "" || confirmar === "") {
-      setMensaje("Completa todos los campos");
-      setTipo("danger");
+    if (!nombre || !email || !password || !confirmar) {
+      alert("Completa todos los campos");
       return;
     }
 
-    // Validación de coincidencia de contraseñas
-    if (password !== confirmar) {
-      setErrorConfirmar("Las contraseñas no coinciden");
+    if (password !==  confirmar) {
+      alert("Los password no coinciden");
       return;
     }
+    alert("Usuario creado con éxito");
 
-    // Si no hay errores, se muestra un mensaje de éxito
-    setMensaje("¡Información enviada con éxito!");
-    setTipo("success");
+  // Si no hay errores, se muestra un mensaje de éxito
+  setMensaje("¡Información enviada con éxito!");
+  setTipo("success");
 
-    setNombre("");
-    setEmail("");
-    setPassword("");
-    setConfirmar("");
-  };
+  setNombre("");
+  setEmail("");
+  setPassword("");
+  setConfirmar("");
+};
 
   return (
     <Container
@@ -116,7 +110,6 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
             <Button
               type="submit"
               className="btn btn-primary btn-lg"
-              onClick={handleGoToProfile}
             >
               Registrarme
             </Button>

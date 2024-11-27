@@ -26,16 +26,23 @@ const ActualizarPerfil = () => {
   // validar datos
   const validarDatos = (e) => {
     e.preventDefault();
+
     if (!nombre || !email || !nuevoPassword || !confirmar) {
       alert("Completa todos los campos");
       return;
     }
 
-    if (!nuevoPassword || !confirmar) {
-      alert("Los password no coienciden");
+    if (nuevoPassword !==  confirmar ) {
+      alert("Los password no coinciden");
       return;
     }
     alert("Perfil actualizado con éxito");
+
+    setNombre("");
+    setEmail("");
+    setPassword("");
+    setNuevoPassword("");
+    setConfirmar("");
   };
     const handleGoToProfile = () => {
       alert("Redirigiendo al Perfil ...");
