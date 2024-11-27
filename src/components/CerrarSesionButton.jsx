@@ -18,27 +18,27 @@ const CerrarSesionButton = () => {
     activeMenu !== "Crear Publicación" &&
     activeMenu !== "Mis Publicaciones" &&
     activeMenu !== "Tienda" &&
-    activeMenu !== "Detalle Publicación"
+    activeMenu !== "Detalle Publicacion"
   ) {
     return null;
   }
 
   return (
     <div
-      className="p-5"
       style={{
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "flex-end",
-        paddingBottom: "30px",
-        paddingRight: "20px",
+        paddingBottom: "20px",
+        paddingRight: "5px",
+        marginTop: "-50px",
       }}
     >
       <Button variant="danger" onClick={handleLogout}>
         Cerrar Sesión
       </Button>
     </div>
-  );
+  )
 };
 
 export default CerrarSesionButton;

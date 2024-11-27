@@ -5,7 +5,8 @@ import { UsuarioContext } from "../context/UsuarioContext";
 import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const CrearPublicacion = () => {
-  const { setActiveMenu, setPublicaciones, usuario } = useContext(UsuarioContext);
+  const { setActiveMenu, setPublicaciones, usuario } =
+    useContext(UsuarioContext);
   const [formData, setFormData] = useState({
     imagen: "",
     titulo: "",
@@ -47,29 +48,33 @@ const CrearPublicacion = () => {
       [name]: value,
     }));
   };
- <p className="text-center p-4">{usuario?.nombre}</p>;
+
   return (
-    <Container fluid className="mt-5">
-      <Row className="p-4">
+    <Container
+      style={{
+        height: "calc(100vh - 140px)",
+      }}
+    >
+      <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
 
-        <Col xs={12} md={9}>
-          <div className="text-center border p-4 rounded shadow-sm bg-white">
-            <h1 className="mb-4" style={{ color: "black" }}>
+        <Col xs={12} md={9} className="d-flex justify-content-center p-4">
+          <div className="text-center border rounded shadow-sm bg-white mt-2 w-50">
+            <h4 className="mb-2" style={{ color: "black" }}>
               Crear Publicación
-            </h1>
-            <p className="text-center p-4" style={{ color: "black" }}>
+            </h4>
+            <p className="text-center" style={{ color: "black" }}>
               {usuario?.nombre}
             </p>
 
             {/* Formulario */}
             <Form
               onSubmit={handleSubmit}
-              className="p-4 bg-light rounded shadow-sm"
+              className="bg-light rounded shadow-sm p-5"
             >
-              <Form.Group controlId="formImagen" className="mb-3">
+              <Form.Group controlId="formImagen" className="mb-2">
                 <Form.Label className="fw-bold" style={{ color: "black" }}>
                   Imagen publicación
                 </Form.Label>
@@ -83,7 +88,7 @@ const CrearPublicacion = () => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formTitulo" className="mb-3">
+              <Form.Group controlId="formTitulo" className="mb-2">
                 <Form.Label className="fw-bold" style={{ color: "black" }}>
                   Título publicación
                 </Form.Label>
@@ -97,13 +102,13 @@ const CrearPublicacion = () => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formDescripcion" className="mb-3">
+              <Form.Group controlId="formDescripcion" className="mb-2">
                 <Form.Label className="fw-bold" style={{ color: "black" }}>
                   Descripción publicación
                 </Form.Label>
                 <Form.Control
                   as="textarea"
-                  rows={4}
+                  rows={2}
                   name="descripcion"
                   value={formData.descripcion}
                   onChange={handleInputChange}
@@ -112,7 +117,7 @@ const CrearPublicacion = () => {
                 />
               </Form.Group>
 
-              <Form.Group controlId="formPrecio" className="mb-3">
+              <Form.Group controlId="formPrecio" className="mb-2">
                 <Form.Label className="fw-bold" style={{ color: "black" }}>
                   Precio
                 </Form.Label>

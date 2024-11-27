@@ -11,8 +11,7 @@ const Tienda = (showCerrarSesion) => {
   const [publicaciones, setPublicaciones] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const { activeMenu, usuario } = useContext(UsuarioContext); // para vista privada
-  const { filteredPublicaciones, cargarPublicaciones } =
-    useContext(UsuarioContext);
+  const { setActiveMenu } = useContext(UsuarioContext);
 
   useEffect(() => {
     // cargar publicaciones
@@ -37,51 +36,121 @@ const Tienda = (showCerrarSesion) => {
     };
   });
 
+  const handleVermasClick = () => {
+    setActiveMenu(""); // Oculta el menú lateral
+  };
+
   return (
-    <Container className="mt-3 p-2">
-      <Buscador />
-      <h3 className="text-center mb-4">Tienda</h3>
-      <Row>
-        {/* elementos visibles en vista privada de la tienda */}
-        {usuario && activeMenu === "Tienda" && (
-          <>
+    <Container>
+      {/* elementos visibles en vista privada de la tienda */}
+      {usuario && activeMenu === "Tienda" ? (
+        <div
+          style={{
+            height: "calc(100vh - 140px)",
+          }}
+        >
+          <Row>
             <Col xs={12} md={3}>
               <MenuLateral />
             </Col>
-            <Col xs={12} md={3}>
-              <p className="text-center p-2">{usuario?.nombre}</p>
+            <Col xs={12} md={9}>
+              <Row>
+                <Col xs={12}>
+                  <h3 className="text-center mb-2 mt-2">Tienda</h3>
+                </Col>
+                <Col xs={12}>
+                  <p className="text-center p-2 mb-2">{usuario?.nombre}</p>
+                </Col>
+              </Row>
             </Col>
-            <Row>
-              <Col sm="6" className="p-3">
-                <OrdenarPor />
-              </Col>
-              <Col sm="6" className="p-3">
-                <Buscador />
-              </Col>
+          </Row>
+
+          <Row
+            className="justify-content-end align-item-start mb-4"
+            style={{ marginTop: "-520px" }}
+          >
+            <Col sm="4" className="p-2">
+              <OrdenarPor />
+            </Col>
+            <Col sm="4" className="p-2">
+              <Buscador />
+            </Col>
+          </Row>
+          <Container
+            style={{
+              maxHeight: "calc(100vh - 450px)",
+              overflowY: "auto",
+              overflowX: "hidden",
+              padding: "15px",
+            }}
+          >
+            <Row
+              className="justify-content-start align-item-start"
+              style={{
+                marginTop: "20px",
+                marginLeft: "400px",
+                width: "75%",
+                height: "75%",
+              }}
+            >
+              {publicacionesConNombre.length > 0 ? (
+                publicacionesConNombre.map((pub, index) => (
+                  <Col xs={12} md={6} lg={6} key={index}>
+                    <CardPublicacion
+                      imagen={pub.imagen_url}
+                      titulo={pub.titulo}
+                      descripcion={pub.descripcion}
+                      precio={pub.precio}
+                      publicadoPor={`${pub.nombreUsuario}`}
+                      emailUsuario={pub.emailUsuario}
+                      mostrarAgregar={true}
+                      isPrivate={true} // Indica que es la tienda privada
+                      handleVermasClick={handleVermasClick}
+                    />
+                  </Col>
+                ))
+              ) : (
+                <p className="p-4">No hay publicaciones disponibles</p>
+              )}
             </Row>
-          </>
-        )}
-        {publicacionesConNombre.length > 0 ? (
-          publicacionesConNombre.map((pub, index) => (
-            <Col xs={12} md={6} lg={4} key={index}>
-              <CardPublicacion
-                imagen={pub.imagen_url}
-                titulo={pub.titulo}
-                descripcion={pub.descripcion}
-                precio={pub.precio}
-                publicadoPor={`${pub.nombreUsuario}`}
-                emailUsuario={pub.emailUsuario}
-                mostrarAgregar={true}
-              />
-            </Col>
-          ))
-        ) : (
-          <p className="p-4">No hay publicaciones disponibles</p>
-        )}
-      </Row>
-      {showCerrarSesion && <CerrarSesionButton />}
+          </Container>
+          <div
+            style={{
+              marginTop: "120px",
+            }}
+          >
+            {showCerrarSesion && <CerrarSesionButton />}
+          </div>
+        </div>
+      ) : (
+        // para elementos vista publica
+        <Row>
+          <Col xs={12}>
+            <h3 className="text-center mb-2 mt-2 mb-4">Tienda</h3>
+          </Col>
+          {publicacionesConNombre.length > 0 ? (
+            publicacionesConNombre.map((pub, index) => (
+              <Col xs={12} md={6} lg={4} key={index}>
+                <CardPublicacion
+                  imagen={pub.imagen_url}
+                  titulo={pub.titulo}
+                  descripcion={pub.descripcion}
+                  precio={pub.precio}
+                  publicadoPor={`${pub.nombreUsuario}`}
+                  emailUsuario={pub.emailUsuario}
+                  mostrarAgregar={true}
+                  isPrivate={false} // Indica que es la tienda pública
+                  handleVermasClick={handleVermasClick} // Ocultar menú al hacer clic
+                />
+              </Col>
+            ))
+          ) : (
+            <p className="p-4">No hay publicaciones disponibles</p>
+          )}
+        </Row>
+      )}
     </Container>
   );
-};
+}
 
 export default Tienda;

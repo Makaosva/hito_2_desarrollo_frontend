@@ -6,7 +6,6 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const initialUsuario = JSON.parse(localStorage.getItem("usuario")) || null;
 
-/* const initialStateToken = localStorage.getItem("token") || null; */
 
 const UsuariosProvider = ({ children }) => {
   const initialStateToken = localStorage.getItem("token") || "";
@@ -16,25 +15,11 @@ const UsuariosProvider = ({ children }) => {
   const [sortOption, setSortOption] = useState(""); // estado para el sort
   const [showCerrarSesion, setShowCerrarSesion] = useState(false);
   const [usuario, setUsuario] = useState(initialUsuario);
-  const [allPublicaciones, setAllPublicaciones] = useState([]); // Todas las publicaciones
-  const [filteredPublicaciones, setFilteredPublicaciones] = useState([]);
-  /* const [favoritos, setFavoritos] = useState([]); */
 
   const logout = () => {
     setUsuario(null);
     localStorage.removeItem("usuario");
   };
-
-  /* const toggleFavorito = (publicacion) => {
-    setFavoritos((prev) => {
-      const yaEsFavorito = prev.find((fav) => fav.id === publicacion.id);
-      if (yaEsFavorito) {
-        return prev.filter((fav) => fav.id !== publicacion.id)
-      } else {
-        return [...prev, publicacion];
-      }
-    });
-  }; */
 
   const handleMenuChange = (menuName) => {
     setActiveMenu(menuName);
@@ -103,8 +88,6 @@ const UsuariosProvider = ({ children }) => {
       value={{
         usuario,
         setUsuario,
-        /*  favoritos,
-        toggleFavorito, */
         loginWithEmailAndPassword,
         registerWithEmailAndPassword,
         token,

@@ -15,17 +15,21 @@ const MisPublicaciones = () => {
   }, [setActiveMenu, publicaciones]);
 
   return (
-    <Container fluid className="mt-5" style={{ minHeight: "100vh" }}>
+    <Container
+      style={{
+        height: "calc(100vh - 140px)",
+      }}
+    >
       <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
 
         <Col xs={12} md={9}>
-          <div className="text-center mb-4">
-            <h1 className="border-bottom pb-2">Mis Publicaciones</h1>
+          <div className="text-center p-2">
+            <h3 className="border-bottom p-2">Mis Publicaciones</h3>
           </div>
-          <p className="text-center p-4">{usuario?.nombre}</p>
+          <p className="text-center p-2">{usuario?.nombre}</p>
           <Row>
             {publicaciones.length > 0 ? (
               publicaciones.map((pub, index) => (

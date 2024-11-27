@@ -16,7 +16,7 @@
     "usuario_id": 2
   },
   {
-    "id": 1,
+    "id": 3,
     "titulo": "Programacion Python",
     "descripcion": "Curso de programacion en Python",
     "imagen_url": "https://th.bing.com/th/id/OIP.XTRl4rwNqniKlEtc6swCMgHaE8?rs=1&pid=ImgDetMain",
@@ -24,7 +24,7 @@
     "usuario_id": 1
   },
   {
-    "id": 2,
+    "id": 4,
     "titulo": "Programacion Java",
     "descripcion": "Curso de programacion en Java",
     "imagen_url": "https://cdn.eduonix.com/assets/images/header_img/2020092815324112334.jpg",
@@ -32,7 +32,7 @@
     "usuario_id": 2
   },
   {
-    "id": 1,
+    "id": 5,
     "titulo": "Programacion C#",
     "descripcion": "Curso de programacion en C#",
     "imagen_url": "https://www.iamtimcorey.com/assets/images/courses/mc-csh-01_title.png",
@@ -40,7 +40,7 @@
     "usuario_id": 1
   },
   {
-    "id": 2,
+    "id": 6,
     "titulo": "Programacion Kotlin",
     "descripcion": "Curso de programacion en Kotlin",
     "imagen_url": "https://www.weetechsolution.com/wp-content/uploads/2023/01/what-is-kotlin.jpg",

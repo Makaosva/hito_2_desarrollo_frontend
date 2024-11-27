@@ -1,25 +1,24 @@
 import React, { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import CardPublicacion from "../componnets/CardPublicacion";
+import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
+import MenuLateral from "../components/MenuLateral";
+import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const MisFavoritos = () => {
-  const { favoritos } = useContext(UsuarioContext);
 
   return (
-    <Container className="mt-4 p-4">
-      <h3 className="text-center mb-4">Mis Favoritos</h3>
+    <Container className="mt-4">
       <Row>
-        {favoritos.length > 0 ? (
-          favoritos.map((fav, index) => (
-            <Col xs={12} md={6} lg={4} key={index}>
-            <CardPublicacion {...fav} mostrarAgregar={false} />
-            </Col>
-      ))
-      ) : (
-      <p className="p-4">no tiene publicaciones marcadas como favoritas</p>
-        )}
+        {/* Menú lateral */}
+        <Col xs={12} md={3}>
+          <MenuLateral />
+        </Col>
+
+        {/* Contenido de las publicaciones favoritas */}
+
       </Row>
+      <CerrarSesionButton />
     </Container>
   );
 };
