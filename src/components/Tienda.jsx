@@ -10,17 +10,14 @@ import Buscador from "../components/Buscador";
 const Tienda = (showCerrarSesion) => {
   const [publicaciones, setPublicaciones] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
-  const { activeMenu, usuario } = useContext(UsuarioContext); // para vista privada
-  const { setActiveMenu } = useContext(UsuarioContext);
+  const { activeMenu, usuario } = useContext(UsuarioContext);
 
   useEffect(() => {
-    // cargar publicaciones
     fetch("/publicaciones.json")
       .then((res) => res.json())
       .then((data) => setPublicaciones(data))
       .catch((err) => console.error("Error al cargar publicaciones", err));
 
-    // cargar usuarios
     fetch("/usuario.json")
       .then((res) => res.json())
       .then((data) => setUsuarios(data))
@@ -36,10 +33,10 @@ const Tienda = (showCerrarSesion) => {
     };
   });
 
-  const handleVermasClick = () => {
+ /* const handleVermasClick = () => {
     setActiveMenu(""); // Oculta el menú lateral
   };
-
+ */
   return (
     <Container>
       {/* elementos visibles en vista privada de la tienda */}
@@ -105,7 +102,7 @@ const Tienda = (showCerrarSesion) => {
                       emailUsuario={pub.emailUsuario}
                       mostrarAgregar={true}
                       isPrivate={true} // Indica que es la tienda privada
-                      handleVermasClick={handleVermasClick}
+                      /* handleVermasClick={handleVermasClick} */
                     />
                   </Col>
                 ))
@@ -140,7 +137,7 @@ const Tienda = (showCerrarSesion) => {
                   emailUsuario={pub.emailUsuario}
                   mostrarAgregar={true}
                   isPrivate={false} // Indica que es la tienda pública
-                  handleVermasClick={handleVermasClick} // Ocultar menú al hacer clic
+                  /* handleVermasClick={handleVermasClick} */ // Ocultar menú al hacer clic
                 />
               </Col>
             ))

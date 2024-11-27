@@ -47,7 +47,7 @@ const Carrito = () => {
   );
 
   return (
-    <Container fluid className="mt-5 p-4" style={{ minHeight: "100vh" }}>
+    <Container className="p-4" style={{ height: "calc(100vh - 140px)" }}>
       <h4 className="text-center">Nombre de Usuario</h4>
       <Container className="mt-4">
         <Table striped bordered hover>
@@ -99,7 +99,13 @@ const Carrito = () => {
           <Button variant="primary">Pagar</Button>
         </div>
       </Container>
-      <CerrarSesionButton />
+      <div
+        style={{
+          marginTop: "150px",
+        }}
+      >
+        <CerrarSesionButton />
+      </div>
     </Container>
   );
 };

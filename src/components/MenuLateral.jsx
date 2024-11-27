@@ -16,7 +16,7 @@ const MenuLateral = () => {
 
   const menuItems = [
     {
-      name: "Crear Publicación",
+      name: "Crear Publicacion",
       onClick: () => navigate("/crear-publicacion"),
     },
     {
@@ -34,16 +34,17 @@ const MenuLateral = () => {
 
     {
       name: "Detalle Publicacion",
-      onClick: () =>
-       /*  setActiveMenu("DetallePublicacion"); */
-        navigate("/detalle-publicacion"),
-      },
+      onClick: () => navigate("/detalle-publicacion"),
+    },
 
     {
       name: "Mis Favoritos",
-      onClick: () => navigate("/favoritos"),
+      onClick: () => navigate("/mis-favoritos"),
     },
-    { name: "Actualizar Perfil", href: "#" },
+    {
+      name: "Actualizar Perfil",
+      onClick: () => navigate("/actualizar-perfil"),
+    },
   ];
 
   return (

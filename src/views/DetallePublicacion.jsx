@@ -13,10 +13,8 @@ const DetallePublicacion = () => {
 
   const DetallesCard = ({ imagen, email }) => (
     <Container>
-      <Col xs={12} md={9} className="d-flex justify-content-end p-4">
-        <div className="text-center border p-5 rounded shadow-sm bg-white">
           <Card
-            className="p-4 shadow-sm"
+            className="p-4 shadow-sm w-75"
             style={{
               border: "2px solid #000",
               borderRadius: "10px",
@@ -24,6 +22,8 @@ const DetallePublicacion = () => {
               flexDirection: "row",
               alignItems: "center",
               gap: "1rem",
+              marginTop: "-520px",
+              marginLeft:"350px",
             }}
           >
             <Card.Img
@@ -50,15 +50,12 @@ const DetallePublicacion = () => {
               <p className="fw-bold text-primary">{email}</p>
             </div>
           </Card>
-        </div>
-      </Col>
     </Container>
   );
 
   return (
     <Container>
-      {/* elementos visibles en vista privada de detalle de publicaciones  */}
-      {usuario && activeMenu === "DetallePublicacion" ? (
+      {usuario ? ( // Verifica si el usuario está autenticado, para vista privada
         <div
           style={{
             height: "calc(100vh - 140px)",
@@ -66,7 +63,7 @@ const DetallePublicacion = () => {
         >
           <Row>
             <Col xs={12} md={3}>
-              {<MenuLateral />}
+              <MenuLateral /> {/* Mostrar menú solo si está autenticado */}
             </Col>
             <Col xs={12} md={9}>
               <Row>
@@ -87,11 +84,12 @@ const DetallePublicacion = () => {
           <Col xs={12} md={9} className="d-flex justify-content-end p-4">
             <DetallesCard imagen={imagen} email={email} />
           </Col>
-          <CerrarSesionButton />
+          <div style={{ marginTop: "-170px" }}>
+            <CerrarSesionButton />
+          </div>
         </div>
       ) : (
-        // vista publica
-          <Container>
+        // Vista pública sin menú lateral
           <Row>
             <Col xs={12}></Col>
             <Col xs={12}>
@@ -101,7 +99,6 @@ const DetallePublicacion = () => {
               <DetallesCard imagen={imagen} email={email} />
             </Col>
           </Row>
-        </Container>
       )}
     </Container>
   );

@@ -6,15 +6,46 @@ const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const initialUsuario = JSON.parse(localStorage.getItem("usuario")) || null;
 
-
 const UsuariosProvider = ({ children }) => {
   const initialStateToken = localStorage.getItem("token") || "";
   const [token, setToken] = useState(initialStateToken);
   const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
-  const [publicaciones, setPublicaciones] = useState([]); // estado para las publicaciones
   const [sortOption, setSortOption] = useState(""); // estado para el sort
   const [showCerrarSesion, setShowCerrarSesion] = useState(false);
   const [usuario, setUsuario] = useState(initialUsuario);
+  //se agrega a MisPublicaciones.jsx
+  const [MisPublicaciones, setMisPublicaciones] = useState([
+    {
+      id: 7,
+      titulo: "Programacion Php",
+      descripcion: "Curso de programacion en Php",
+      imagen_url:
+        "https://th.bing.com/th/id/OIP.DNfxVyVqi5vjaISEE9ewAAHaEK?rs=1&pid=ImgDetMain",
+      precio: 600000,
+      usuario_id: 3,
+    },
+    {
+      id: 8,
+      titulo: "Programacion TypeScript",
+      descripcion: "Curso de programacion en TypeScript",
+      imagen_url:
+        "https://cdn.thenewstack.io/media/2022/01/10b88c68-typescript-logo.png",
+      precio: 650000,
+      usuario_id: 4,
+    },
+  ]);
+
+  const [MisFavoritos, setMisFavoritos] = useState([
+    {
+      id: 7,
+      titulo: "Programacion Php",
+      descripcion: "Curso de programacion en Php",
+      imagen_url:
+        "https://th.bing.com/th/id/OIP.DNfxVyVqi5vjaISEE9ewAAHaEK?rs=1&pid=ImgDetMain",
+      precio: 600000,
+      usuario_id: 3,
+    },
+  ]);
 
   const logout = () => {
     setUsuario(null);
@@ -30,14 +61,24 @@ const UsuariosProvider = ({ children }) => {
     }
   };
 
+  const handleMenuCambio = (menuName) => {
+    setActiveMenu(menuName);
+    if (menuName === "DetallePublicacion") {
+      setShowCerrarSesion(true);
+    } else {
+      setShowCerrarSesion(false);
+    }
+  };
+
+
   useEffect(() => {
-    let sortedPublicaciones = [...publicaciones];
+    let sortedPublicaciones = [...MisPublicaciones];
     if (sortOption === "name-asc") {
       sortedPublicaciones.sort((a, b) => a.titulo.localeCompare(b.titulo));
     } else if (sortOption === "name-desc") {
       sortedPublicaciones.sort((a, b) => b.titulo.localeCompare(a.titulo));
     }
-    setPublicaciones(sortedPublicaciones);
+    setMisPublicaciones(sortedPublicaciones);
   }, [sortOption]);
 
   const loginWithEmailAndPassword = async (email, password) => {
@@ -94,10 +135,13 @@ const UsuariosProvider = ({ children }) => {
         setToken,
         activeMenu,
         setActiveMenu: handleMenuChange,
+        setActiveMenu: handleMenuCambio,
         showCerrarSesion,
         setShowCerrarSesion,
-        publicaciones,
-        setPublicaciones,
+        MisPublicaciones,
+        setMisPublicaciones,
+        MisFavoritos,
+        setMisFavoritos,
         logout,
         setSortOption,
       }}
