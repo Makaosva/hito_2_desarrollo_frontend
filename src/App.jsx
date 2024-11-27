@@ -13,6 +13,7 @@ import Home from "./views/Home";
 import Footer from "./components/Footer";
 import Tienda from "./components/Tienda";
 import RutaPrivada from "./components/RutaPrivada";
+import MisFavoritos from "./views/MisFavoritos";
 
 function App() {
   return (
@@ -50,6 +51,14 @@ function App() {
             element={
               <RutaPrivada>
                 <MisPublicaciones />
+              </RutaPrivada>
+            }
+          />
+          <Route
+            path="/mis-favoritos"
+            element={
+              <RutaPrivada>
+                <MisFavoritos />
               </RutaPrivada>
             }
           />

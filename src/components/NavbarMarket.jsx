@@ -22,11 +22,7 @@ const shouldHideAuthLinks = (pathname) => {
 
 const shouldHideCartLinks = (pathname) => {
   // para que se oculte solo el carrito en estas vistas
-  const hiddenRoutesForCart = [
-    "/login",
-    "/registro",
-    "/carrito",
-  ];
+  const hiddenRoutesForCart = ["/login", "/registro", "/carrito"];
   return hiddenRoutesForCart.some((route) => pathname.startsWith(route));
 };
 
@@ -43,7 +39,7 @@ function NavbarMarket() {
   const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
 
   return (
-   <div className="d-flex">
+    <div className="d-flex">
       {/* Columna lateral con el MenuLateral */}
       {isDetallePublicacion(location.pathname) && usuario && (
         <Col
@@ -64,7 +60,7 @@ function NavbarMarket() {
 
       {/* Contenido principal */}
       <div className="flex-grow-1">
-        <Navbar bg="black" variant="dark" expand="lg">
+        <Navbar bg="black" variant="dark" expand="lg" style={{ height: "70px" }}>
           <Container fluid>
             <Navbar.Brand>
               <Nav.Link as={NavLink} to="/" onClick={handleLogoClick}>
@@ -72,19 +68,34 @@ function NavbarMarket() {
               </Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic_avbar_nav" />
-            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+            <Navbar.Collapse
+              id="basic-navbar-nav"
+              className="justify-content-end"
+            >
               <Nav className="mr-auto">
                 {/* Mostrar el menu en detalle-publicacion */}
                 {isDetallePublicacion(location.pathname) ? (
                   // Mostrar Registro, Login y Carrito en /detalle-publicacion (siempre)
                   <>
-                    <Nav.Link as={NavLink} to="/registro" className={setActiveClass}>
+                    <Nav.Link
+                      as={NavLink}
+                      to="/registro"
+                      className={setActiveClass}
+                    >
                       <h3>Register</h3>
                     </Nav.Link>
-                    <Nav.Link as={NavLink} to="/login" className={setActiveClass}>
+                    <Nav.Link
+                      as={NavLink}
+                      to="/login"
+                      className={setActiveClass}
+                    >
                       <h3>Login</h3>
                     </Nav.Link>
-                    <Nav.Link as={NavLink} to="/carrito" className={setActiveClass}>
+                    <Nav.Link
+                      as={NavLink}
+                      to="/carrito"
+                      className={setActiveClass}
+                    >
                       <FaShoppingCart style={{ fontSize: "2rem" }} />
                     </Nav.Link>
                   </>
@@ -93,16 +104,28 @@ function NavbarMarket() {
                   <>
                     {!shouldHideAuthLinks(location.pathname) && (
                       <>
-                        <Nav.Link as={NavLink} to="/registro" className={setActiveClass}>
+                        <Nav.Link
+                          as={NavLink}
+                          to="/registro"
+                          className={setActiveClass}
+                        >
                           <h3>Register</h3>
                         </Nav.Link>
-                        <Nav.Link as={NavLink} to="/login" className={setActiveClass}>
+                        <Nav.Link
+                          as={NavLink}
+                          to="/login"
+                          className={setActiveClass}
+                        >
                           <h3>Login</h3>
                         </Nav.Link>
                       </>
                     )}
                     {!shouldHideCartLinks(location.pathname) && (
-                      <Nav.Link as={NavLink} to="/carrito" className={setActiveClass}>
+                      <Nav.Link
+                        as={NavLink}
+                        to="/carrito"
+                        className={setActiveClass}
+                      >
                         <FaShoppingCart style={{ fontSize: "2rem" }} />
                       </Nav.Link>
                     )}

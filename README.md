@@ -37,4 +37,4 @@ gráfica del proyecto.
 
 ---
 
-⌨️Escrito con ❤️ por [Macarena Osses](https://github.com/Makaosva) y [Carolina Cstillo](https://github.com/Carolina2024)
+⌨️Escrito con ❤️ por [Macarena Osses](https://github.com/Makaosva) y [Carolina Castillo](https://github.com/Carolina2024)

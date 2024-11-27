@@ -16,7 +16,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
   };
 
   const handleGoBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   const handleChange = (setter) => (e) => {

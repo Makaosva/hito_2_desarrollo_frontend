@@ -15,15 +15,17 @@ const Perfil = () => {
   }, [setActiveMenu]);
 
   return (
-    <Container fluid className="mt-5" style={{ minHeight: "100vh" }}>
+    <Container style={{
+      height: "calc(100vh - 140px)"
+    }}>
       <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
 
-        <Col xs={12} md={9}>
-          <div className="text-center border p-4 rounded shadow-sm bg-white">
-            <h1 style={{ color: "black" }}>Mi Perfil</h1>
+        <Col xs={12} md={9} className="p-4">
+          <div className="text-center border rounded shadow-sm bg-white">
+            <h2 style={{ color: "black" }}>Mi Perfil</h2>
           </div>
           {/* para que se muestre nombre de usuario */}
           <p className="text-center p-4">{usuario?.nombre}</p>
