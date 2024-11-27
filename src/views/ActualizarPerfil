@@ -1,9 +1,0 @@
-import React from 'react'
-
-const ActualizarPerfil = () => {
-  return (
-    <div>ActualizarPerfil</div>
-  )
-}
-
-export default ActualizarPerfil
