@@ -3,7 +3,6 @@ import { Nav, Navbar, Container, Col } from "react-bootstrap";
 import { NavLink, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { UsuarioContext } from "../context/UsuarioContext";
-import MenuLateral from "../components/MenuLateral";
 import CerrarSesionButton from "./CerrarSesionButton";
 
 const shouldHideAuthLinks = (pathname) => {
@@ -36,7 +35,7 @@ const shouldHideCartLinks = (pathname) => {
 
 function NavbarMarket() {
   const location = useLocation();
-  const { setActiveMenu, usuario } = useContext(UsuarioContext);
+  const { setActiveMenu} = useContext(UsuarioContext);
 
   const handleLogoClick = () => {
     setActiveMenu(""); //resetea el activeMenu al estado inicial

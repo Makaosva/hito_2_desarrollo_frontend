@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import MenuLateral from "../components/MenuLateral";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 import { UsuarioContext } from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
 
@@ -42,9 +41,6 @@ const ActualizarPerfil = () => {
     setPassword("");
     setNuevoPassword("");
     setConfirmar("");
-  };
-  const handleGoToProfile = () => {
-    alert("Redirigiendo al Perfil ...");
   };
 
   const handleGoBack = () => {

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import MenuLateral from "../components/MenuLateral";
 import { UsuarioContext } from "../context/UsuarioContext";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const CrearPublicacion = () => {
   const { setActiveMenu } = useContext(UsuarioContext);

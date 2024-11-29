@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
 import MenuLateral from "../components/MenuLateral";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const MisFavoritos = () => {
   const { MisFavoritos, setActiveMenu } = useContext(UsuarioContext);
