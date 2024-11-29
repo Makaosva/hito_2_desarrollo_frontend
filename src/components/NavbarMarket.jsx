@@ -4,6 +4,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { UsuarioContext } from "../context/UsuarioContext";
 import MenuLateral from "../components/MenuLateral";
+import CerrarSesionButton from "./CerrarSesionButton";
 
 const shouldHideAuthLinks = (pathname) => {
   // para que se oculte registro y login en estas vistas
@@ -11,7 +12,7 @@ const shouldHideAuthLinks = (pathname) => {
     "/perfil",
     "/crear-publicacion",
     "/mis-publicaciones",
-    /*  "/detalle-publicacion", */
+    "/detalle-publicacion",
     "/login",
     "/registro",
     "/tienda",
@@ -24,11 +25,14 @@ const shouldHideAuthLinks = (pathname) => {
 
 const shouldHideCartLinks = (pathname) => {
   // para que se oculte solo el carrito en estas vistas
-  const hiddenRoutesForCart = ["/login", "/registro", "/carrito", "/actualizar-perfil"];
+  const hiddenRoutesForCart = [
+    "/login",
+    "/registro",
+    "/carrito",
+    "/actualizar-perfil",
+  ];
   return hiddenRoutesForCart.some((route) => pathname.startsWith(route));
 };
-
-const isDetallePublicacion = (pathname) => pathname === "/detalle-publicacion";
 
 function NavbarMarket() {
   const location = useLocation();
@@ -42,23 +46,18 @@ function NavbarMarket() {
 
   return (
     <div className="d-flex">
-      {/* Columna lateral con el MenuLateral */}
-      {isDetallePublicacion(location.pathname) && usuario && (
-        <Col
-          xs={12}
-          md={3}
-          className="menu-lateral-container"
-          style={{
-            position: "absolute",
-            top: "50%",
-            transform: "translateY(-50%)",
-            left: "0",
-            zIndex: 999,
-          }}
-        >
-          {/*    <MenuLateral /> */}
-        </Col>
-      )}
+      <Col
+        xs={12}
+        md={3}
+        className="menu-lateral-container"
+        style={{
+          position: "absolute",
+          top: "50%",
+          transform: "translateY(-50%)",
+          left: "0",
+          zIndex: 999,
+        }}
+      ></Col>
 
       {/* Contenido principal */}
       <div className="flex-grow-1">
@@ -66,12 +65,23 @@ function NavbarMarket() {
           bg="black"
           variant="dark"
           expand="lg"
+          fixed="top" // Navbar fijo
+          className="shadow"
           style={{ height: "70px" }}
         >
           <Container fluid>
             <Navbar.Brand>
-              <Nav.Link as={NavLink} to="/" onClick={handleLogoClick}>
-                <img src="../Logo.jpeg" alt="Icono" />
+              <Nav.Link
+                as={NavLink}
+                to="/"
+                onClick={handleLogoClick}
+                className="d-inline-block p-2"
+              >
+                <img
+                  src="../Logo.jpeg"
+                  alt="Icono"
+                  style={{ width: "170px", height: "auto" }}
+                />
               </Nav.Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic_avbar_nav" />
@@ -80,66 +90,42 @@ function NavbarMarket() {
               className="justify-content-end"
             >
               <Nav className="mr-auto">
-                {/* Mostrar el menu en detalle-publicacion */}
-                {isDetallePublicacion(location.pathname) ? (
+                {/* se oculta registro y login */}
+                {!shouldHideAuthLinks(location.pathname) && (
                   <>
                     <Nav.Link
                       as={NavLink}
                       to="/registro"
                       className={setActiveClass}
                     >
-                      <h3>Register</h3>
+                      <span className="fs-6">Regístrate</span>
                     </Nav.Link>
                     <Nav.Link
                       as={NavLink}
                       to="/login"
                       className={setActiveClass}
                     >
-                      <h3>Login</h3>
+                      <span className="fs-6">Iniciar Sesión</span>
                     </Nav.Link>
-                    <Nav.Link
-                      as={NavLink}
-                      to="/carrito"
-                      className={setActiveClass}
-                    >
-                      <FaShoppingCart style={{ fontSize: "2rem" }} />
-                    </Nav.Link>
-                  </>
-                ) : (
-                  <>
-                    {!shouldHideAuthLinks(location.pathname) && (
-                      <>
-                        <Nav.Link
-                          as={NavLink}
-                          to="/registro"
-                          className={setActiveClass}
-                        >
-                          <h3>Register</h3>
-                        </Nav.Link>
-                        <Nav.Link
-                          as={NavLink}
-                          to="/login"
-                          className={setActiveClass}
-                        >
-                          <h3>Login</h3>
-                        </Nav.Link>
-                      </>
-                    )}
-                    {!shouldHideCartLinks(location.pathname) && (
-                      <Nav.Link
-                        as={NavLink}
-                        to="/carrito"
-                        className={setActiveClass}
-                      >
-                        <FaShoppingCart style={{ fontSize: "2rem" }} />
-                      </Nav.Link>
-                    )}
                   </>
                 )}
+                {!shouldHideCartLinks(location.pathname) && (
+                  <Nav.Link
+                    as={NavLink}
+                    to="/carrito"
+                    className={setActiveClass}
+                  >
+                    <FaShoppingCart style={{ fontSize: "1.4rem" }} />
+                  </Nav.Link>
+                )}
+                <Nav.Link>
+                  <CerrarSesionButton />
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        <div style={{ marginTop: "70px" }}></div>
       </div>
     </div>
   );

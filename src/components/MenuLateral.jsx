@@ -4,15 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { UsuarioContext } from "../context/UsuarioContext";
 
 const MenuLateral = () => {
-  const { activeMenu, setActiveMenu, setShowCerrarSesion } =
-    useContext(UsuarioContext);
+  const { activeMenu, setActiveMenu } = useContext(UsuarioContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (activeMenu === "Home") {
-      setShowCerrarSesion(false);
-    }
-  }, [activeMenu, setShowCerrarSesion]);
 
   const menuItems = [
     {
@@ -33,11 +26,6 @@ const MenuLateral = () => {
     },
 
     {
-      name: "Detalle Publicacion",
-      onClick: () => navigate("/detalle-publicacion"),
-    },
-
-    {
       name: "Mis Favoritos",
       onClick: () => navigate("/mis-favoritos"),
     },
@@ -51,26 +39,29 @@ const MenuLateral = () => {
     <Row>
       <Col>
         <Nav
-          className="flex-column bg-light p-3  rounded"
+          className="flex-column p-3 rounded"
           style={{
             height: "81.5vh",
+            background: "linear-gradient(to bottom, #2c3e50, #34495e)",
             borderWidth: "2px",
-            borderColor: "#000",
+            borderColor: "#1abc9c",
             borderStyle: "solid",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
           }}
         >
           {menuItems.map((item, index) => (
             <Nav.Link
               key={index}
               href="#"
-              className={`mb-2 text-dark py-2 ${
-                activeMenu === item.name
-                  ? "fw-bold bg-secondary text-white"
-                  : ""
+              className={`mb-2 py-2 ${
+                activeMenu === item.name ? "fw-bold text-white" : "text-light"
               }`}
               style={{
-                border: "2px solid #000",
+                backgroundColor:
+                  activeMenu === item.name ? "#008B8B" : "transparent",
+                border: "2px solid #1abc9c",
                 borderRadius: "5px",
+                transition: "background-color 0.3s, color 0.3s",
               }}
               onClick={() => {
                 setActiveMenu(item.name);

@@ -46,9 +46,18 @@ const Carrito = () => {
     0
   );
 
+  const handlePagar = () => {
+    if (
+      window.confirm(
+        "¡Estás a punto de proceder con el pago! ¿Confirmas que deseas pagar?"
+      )
+    ) {
+      alert("¡Gracias por tu pago!");
+    }
+  };
+
   return (
     <Container className="p-4" style={{ height: "calc(100vh - 140px)" }}>
-      <h4 className="text-center">Nombre de Usuario</h4>
       <Container className="mt-4">
         <Table striped bordered hover>
           <thead>
@@ -96,16 +105,20 @@ const Carrito = () => {
         </Table>
         <div className="d-flex justify-content-between">
           <h4>Total Pagar: ${totalPagar}</h4>
-          <Button variant="primary">Pagar</Button>
+          <Button
+            variant="primary"
+            style={{ background: "#8FBC8F" }}
+            onClick={handlePagar}
+          >
+            Pagar
+          </Button>
         </div>
       </Container>
       <div
         style={{
           marginTop: "150px",
         }}
-      >
-        <CerrarSesionButton />
-      </div>
+      ></div>
     </Container>
   );
 };

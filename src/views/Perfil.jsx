@@ -15,9 +15,11 @@ const Perfil = () => {
   }, [setActiveMenu]);
 
   return (
-    <Container style={{
-      height: "calc(100vh - 140px)"
-    }}>
+    <Container
+      style={{
+        height: "calc(100vh - 140px)",
+      }}
+    >
       <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
@@ -27,11 +29,9 @@ const Perfil = () => {
           <div className="text-center border rounded shadow-sm bg-white">
             <h2 style={{ color: "black" }}>Mi Perfil</h2>
           </div>
-          {/* para que se muestre nombre de usuario */}
           <p className="text-center p-4">{usuario?.nombre}</p>
         </Col>
       </Row>
-      <CerrarSesionButton />
     </Container>
   );
 };

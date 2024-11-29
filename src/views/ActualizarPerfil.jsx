@@ -15,7 +15,6 @@ const ActualizarPerfil = () => {
   const [nuevoPassword, setNuevoPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
 
-  //para que se active el menu color gris oscuro
   useEffect(() => {
     setActiveMenu("Actualizar Perfil");
   }, [setActiveMenu]);
@@ -32,7 +31,7 @@ const ActualizarPerfil = () => {
       return;
     }
 
-    if (nuevoPassword !==  confirmar ) {
+    if (nuevoPassword !== confirmar) {
       alert("Los password no coinciden");
       return;
     }
@@ -44,42 +43,79 @@ const ActualizarPerfil = () => {
     setNuevoPassword("");
     setConfirmar("");
   };
-    const handleGoToProfile = () => {
-      alert("Redirigiendo al Perfil ...");
-    }
+  const handleGoToProfile = () => {
+    alert("Redirigiendo al Perfil ...");
+  };
 
   const handleGoBack = () => {
     navigate("/perfil");
   };
 
   return (
-      <Container style={{ height: "calc(100vh - 140px)" }}>
+    <Container style={{ height: "calc(100vh - 140px)" }}>
       <Row>
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
-        <Col xs={12} md={9} className="d-flex justify-content-center align-items-center">
+        <Col
+          xs={12}
+          md={9}
+          className="d-flex justify-content-center align-items-center"
+        >
           <Container
             className="d-flex justify-content-center align-items-center"
-            style={{ paddingTop: "10px" }}
+            style={{ paddingTop: "20px" }}
           >
-            <div className="w-100 d-flex justify-content-center align-items-center" style={{ maxWidth: "300px" }}>
-              <Form onSubmit={validarDatos}>
-                <Form.Group as={Row} className="mb-2" controlId="formPlaintextName">
-                  <Form.Label column sm="12" className="text-start">
+            <div
+              className="w-100 d-flex justify-content-center align-items-center"
+              style={{ maxWidth: "370px" }}
+            >
+              <Form
+                onSubmit={validarDatos}
+                style={{
+                  maxWidth: "500px",
+                  margin: "auto",
+                  background: "linear-gradient(to right, #cce7ff, #a0c4ff)",
+                  padding: "15px",
+                  borderRadius: "10px",
+                  boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <Form.Group
+                  as={Row}
+                  className="mb-2"
+                  controlId="formPlaintextName"
+                >
+                  <Form.Label
+                    column
+                    sm="12"
+                    className="text-start"
+                    style={{ fontWeight: "600", color: "#4a4a4a" }}
+                  >
                     Nombre
                   </Form.Label>
                   <Col sm="12">
                     <Form.Control
                       type="text"
-                      placeholder="Francisca"
+                      placeholder="Name"
                       onChange={handleChange(setNombre)}
                       value={nombre}
+                      style={{
+                        borderColor: "#b0c4de",
+                        borderRadius: "8px",
+                        padding: "10px",
+                        boxShadow: "none",
+                      }}
                     />
                   </Col>
                 </Form.Group>
-                <Form.Group as={Row} className="mb-2" controlId="formPlaintextEmail">
-                  <Form.Label column sm="12" className="text-start">
+                <Form.Group as={Row} controlId="formPlaintextEmail">
+                  <Form.Label
+                    column
+                    sm="12"
+                    className="text-start"
+                    style={{ fontWeight: "600", color: "#4a4a4a" }}
+                  >
                     Email
                   </Form.Label>
                   <Col sm="12">
@@ -88,11 +124,22 @@ const ActualizarPerfil = () => {
                       placeholder="name@example.com"
                       onChange={handleChange(setEmail)}
                       value={email}
+                      style={{
+                        borderColor: "#b0c4de",
+                        borderRadius: "8px",
+                        padding: "10px",
+                        boxShadow: "none",
+                      }}
                     />
                   </Col>
                 </Form.Group>
-                <Form.Group as={Row} className="mb-2" controlId="formPlaintextPassword">
-                  <Form.Label column sm="12" className="text-start">
+                <Form.Group as={Row} controlId="formPlaintextPassword">
+                  <Form.Label
+                    column
+                    sm="12"
+                    className="text-start"
+                    style={{ fontWeight: "600", color: "#4a4a4a" }}
+                  >
                     Password Actual
                   </Form.Label>
                   <Col sm="12">
@@ -101,11 +148,22 @@ const ActualizarPerfil = () => {
                       placeholder="*******"
                       onChange={handleChange(setPassword)}
                       value={password}
+                      style={{
+                        borderColor: "#b0c4de",
+                        borderRadius: "8px",
+                        padding: "10px",
+                        boxShadow: "none",
+                      }}
                     />
                   </Col>
                 </Form.Group>
-                <Form.Group as={Row} className="mb-2" controlId="formPlaintextNewPassword">
-                  <Form.Label column sm="12" className="text-start">
+                <Form.Group as={Row} controlId="formPlaintextNewPassword">
+                  <Form.Label
+                    column
+                    sm="12"
+                    className="text-start"
+                    style={{ fontWeight: "600", color: "#4a4a4a" }}
+                  >
                     Nuevo Password
                   </Form.Label>
                   <Col sm="12">
@@ -114,12 +172,23 @@ const ActualizarPerfil = () => {
                       placeholder="*******"
                       onChange={handleChange(setNuevoPassword)}
                       value={nuevoPassword}
+                      style={{
+                        borderColor: "#b0c4de",
+                        borderRadius: "8px",
+                        padding: "10px",
+                        boxShadow: "none",
+                      }}
                     />
                   </Col>
                 </Form.Group>
-                <Form.Group as={Row} className="mb-2" controlId="formPlaintextConfirmPassword">
-                  <Form.Label column sm="12" className="text-start">
-                    Confirmar Password
+                <Form.Group as={Row} controlId="formPlaintextConfirmPassword">
+                  <Form.Label
+                    column
+                    sm="12"
+                    className="text-start"
+                    style={{ fontWeight: "600", color: "#4a4a4a" }}
+                  >
+                    Confirmar nueva Password
                   </Form.Label>
                   <Col sm="12">
                     <Form.Control
@@ -127,14 +196,29 @@ const ActualizarPerfil = () => {
                       placeholder="*******"
                       onChange={handleChange(setConfirmar)}
                       value={confirmar}
+                      style={{
+                        borderColor: "#b0c4de",
+                        borderRadius: "8px",
+                        padding: "10px",
+                        boxShadow: "none",
+                      }}
                     />
                   </Col>
                 </Form.Group>
                 <div className="d-flex justify-content-center gap-4 pt-2">
-                  <Button type="submit" className="btn btn-primary btn-lg">
+                  <Button
+                    type="submit"
+                    className="btn btn-primary btn-lg"
+                    style={{ background: "#4682B4" }}
+                  >
                     Actualizar
                   </Button>
-                  <Button type="button" className="btn btn-secondary btn-lg" onClick={handleGoBack}>
+                  <Button
+                    type="button"
+                    className="btn btn-secondary btn-lg"
+                    onClick={handleGoBack}
+                    style={{ background: "#00BFFF" }}
+                  >
                     Volver
                   </Button>
                 </div>
@@ -143,11 +227,9 @@ const ActualizarPerfil = () => {
           </Container>
         </Col>
       </Row>
-      <Row className="d-flex justify-content-end">
-        <CerrarSesionButton />
-      </Row>
-  </Container>
-    );
-  };
+      <Row className="d-flex justify-content-end"></Row>
+    </Container>
+  );
+};
 
 export default ActualizarPerfil;

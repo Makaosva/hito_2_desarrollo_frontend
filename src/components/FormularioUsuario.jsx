@@ -9,7 +9,6 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmar, setConfirmar] = useState("");
-  const [errorConfirmar, setErrorConfirmar] = useState("");
 
   const handleGoBack = () => {
     navigate("/login");
@@ -17,8 +16,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
 
   const handleChange = (setter) => (e) => {
     setter(e.target.value);
-    setMensaje(""); // Limpiar el mensaje al cambiar algún campo
-    setErrorConfirmar(""); // Limpiar el mensaje de error de confirmación
+    setMensaje("");
   };
 
   const validarDatos = (e) => {
@@ -29,21 +27,17 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
       return;
     }
 
-    if (password !==  confirmar) {
+    if (password !== confirmar) {
       alert("Los password no coinciden");
       return;
     }
     alert("Usuario creado con éxito");
 
-  // Si no hay errores, se muestra un mensaje de éxito
-  setMensaje("¡Información enviada con éxito!");
-  setTipo("success");
-
-  setNombre("");
-  setEmail("");
-  setPassword("");
-  setConfirmar("");
-};
+    setNombre("");
+    setEmail("");
+    setPassword("");
+    setConfirmar("");
+  };
 
   return (
     <Container
@@ -53,7 +47,18 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
       }}
     >
       <div className="w-75" style={{ maxWidth: "300px" }}>
-        <Form onSubmit={validarDatos}>
+        <Form
+          onSubmit={validarDatos}
+          style={{
+            maxWidth: "600px",
+            margin: "auto",
+            background: "linear-gradient(to right, #d3d3d3, #a9a9a9, #808080)",
+            color: "#343a40",
+            padding: "30px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.5)",
+          }}
+        >
           <Form.Group as={Row} className="mb-2" controlId="formPlaintextName">
             <Form.Label column sm="12" className="text-start">
               Nombre
@@ -61,7 +66,7 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
             <Col sm="12">
               <Form.Control
                 type="text"
-                placeholder="Francisca"
+                placeholder="Name"
                 onChange={handleChange(setNombre)}
                 value={nombre}
               />
@@ -107,16 +112,14 @@ const FormularioUsuario = ({ setMensaje, setTipo }) => {
             </Col>
           </Form.Group>
           <div className="d-flex justify-content-center gap-4 pt-2">
-            <Button
-              type="submit"
-              className="btn btn-primary btn-lg"
-            >
+            <Button type="submit" className="btn btn-primary btn-lg">
               Registrarme
             </Button>
             <Button
               type="button"
               className="btn btn-secondary btn-lg"
               onClick={handleGoBack}
+              style={{ background: "#00BFFF" }}
             >
               Volver
             </Button>

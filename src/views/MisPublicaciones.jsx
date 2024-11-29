@@ -5,14 +5,12 @@ import CardPublicacion from "../components/CardPublicacion";
 import { UsuarioContext } from "../context/UsuarioContext";
 import CerrarSesionButton from "../components/CerrarSesionButton";
 
-
 const MisPublicaciones = () => {
-  const { MisPublicaciones, setActiveMenu} = useContext(UsuarioContext);
+  const { MisPublicaciones, setActiveMenu } = useContext(UsuarioContext);
 
   useEffect(() => {
     setActiveMenu("Mis Publicaciones");
   }, [setActiveMenu]);
-
 
   return (
     <Container
@@ -40,7 +38,7 @@ const MisPublicaciones = () => {
                     descripcion={pub.descripcion}
                     precio={pub.precio}
                     publicadoPor="Usuario_actual"
-                    mostrarAgregar={false} // para ocultar el boton agregar
+                    mostrarAgregar={false}
                   />
                 </Col>
               ))
@@ -50,7 +48,6 @@ const MisPublicaciones = () => {
           </Row>
         </Col>
       </Row>
-      <CerrarSesionButton />
     </Container>
   );
 };

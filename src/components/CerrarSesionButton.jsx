@@ -12,14 +12,28 @@ const CerrarSesionButton = () => {
     navigate("/login");
   };
 
+  // Ocultar botón en la vista DetallePublicacion
+  if (location.pathname.startsWith("/detalle-publicacion")) {
+    return null;
+  }
+
+  // Ocultar el botón en la vista de login
+  if (window.location.pathname === "/login") {
+    return null;
+  }
+
+  if (window.location.pathname === "/") {
+    return null;
+  }
+
   // para que se muestre cerrar sesion en peril con sus opciones
   if (
     activeMenu !== "Perfil" &&
     activeMenu !== "Crear Publicacion" &&
     activeMenu !== "Mis Publicaciones" &&
     activeMenu !== "Tienda" &&
-    activeMenu !== "Detalle Publicacion" &&
     activeMenu !== "Mis Favoritos" &&
+    activeMenu !== "Carrito" &&
     activeMenu !== "Actualizar Perfil"
   ) {
     return null;
@@ -31,16 +45,16 @@ const CerrarSesionButton = () => {
         display: "flex",
         justifyContent: "flex-end",
         alignItems: "flex-end",
-        paddingBottom: "20px",
+        paddingBottom: "15px",
         paddingRight: "5px",
-        marginTop: "-50px",
+        marginTop: "-45px",
       }}
     >
-      <Button variant="danger" onClick={handleLogout}>
+      <Button className="mt-5 btn-sm" variant="danger" onClick={handleLogout}>
         Cerrar Sesión
       </Button>
     </div>
-  )
+  );
 };
 
 export default CerrarSesionButton;

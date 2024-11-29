@@ -7,7 +7,7 @@ import MenuLateral from "./MenuLateral";
 import OrdenarPor from "../components/OrdenarPor";
 import Buscador from "../components/Buscador";
 
-const Tienda = (showCerrarSesion) => {
+const Tienda = () => {
   const [publicaciones, setPublicaciones] = useState([]);
   const [usuarios, setUsuarios] = useState([]);
   const { activeMenu, usuario } = useContext(UsuarioContext);
@@ -33,10 +33,6 @@ const Tienda = (showCerrarSesion) => {
     };
   });
 
- /* const handleVermasClick = () => {
-    setActiveMenu(""); // Oculta el menú lateral
-  };
- */
   return (
     <Container>
       {/* elementos visibles en vista privada de la tienda */}
@@ -53,7 +49,7 @@ const Tienda = (showCerrarSesion) => {
             <Col xs={12} md={9}>
               <Row>
                 <Col xs={12}>
-                  <h3 className="text-center mb-2 mt-2">Tienda</h3>
+                  <h3 className="text-center mb-2 mt-2">Tienda de Cursos</h3>
                 </Col>
                 <Col xs={12}>
                   <p className="text-center p-2 mb-2">{usuario?.nombre}</p>
@@ -101,8 +97,6 @@ const Tienda = (showCerrarSesion) => {
                       publicadoPor={`${pub.nombreUsuario}`}
                       emailUsuario={pub.emailUsuario}
                       mostrarAgregar={true}
-                      isPrivate={true} // Indica que es la tienda privada
-                      /* handleVermasClick={handleVermasClick} */
                     />
                   </Col>
                 ))
@@ -111,19 +105,12 @@ const Tienda = (showCerrarSesion) => {
               )}
             </Row>
           </Container>
-          <div
-            style={{
-              marginTop: "120px",
-            }}
-          >
-            {showCerrarSesion && <CerrarSesionButton />}
-          </div>
         </div>
       ) : (
         // para elementos vista publica
         <Row>
           <Col xs={12}>
-            <h3 className="text-center mb-2 mt-2 mb-4">Tienda</h3>
+            <h3 className="text-center mb-2 mt-2 mb-4">Tienda de Cursos</h3>
           </Col>
           {publicacionesConNombre.length > 0 ? (
             publicacionesConNombre.map((pub, index) => (
@@ -136,8 +123,6 @@ const Tienda = (showCerrarSesion) => {
                   publicadoPor={`${pub.nombreUsuario}`}
                   emailUsuario={pub.emailUsuario}
                   mostrarAgregar={true}
-                  isPrivate={false} // Indica que es la tienda pública
-                  /* handleVermasClick={handleVermasClick} */ // Ocultar menú al hacer clic
                 />
               </Col>
             ))
@@ -148,6 +133,6 @@ const Tienda = (showCerrarSesion) => {
       )}
     </Container>
   );
-}
+};
 
 export default Tienda;
