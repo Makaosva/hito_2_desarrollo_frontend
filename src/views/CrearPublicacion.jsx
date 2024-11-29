@@ -30,17 +30,6 @@ const CrearPublicacion = () => {
     });
   };
 
-  /* const nuevaPublicacion = {
-    ...formData,
-    publicadoPor: "Usuario actual",
-  };
-  setPublicaciones((prev) => {
-    const updatedPublicaciones = [...prev, nuevaPublicacion];
-    return updatedPublicaciones;
-  });
-  const { MisPublicaciones, setMisPublicaciones } = useContext(UsuarioContext);
-  setPublicaciones((prev) => [...prev, nuevaPublicacion]); */
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -61,11 +50,11 @@ const CrearPublicacion = () => {
         </Col>
 
         <Col xs={12} md={9} className="d-flex justify-content-center p-4">
-          <div className="text-center border rounded shadow-sm bg-white w-50">
-            <h4 className="mb-2" style={{ color: "black" }}>
+          <div className="text-center shadow-sm w-50">
+            <h4 className="mb-2" style={{ color: "white" }}>
               Crear Publicación
             </h4>
-            <p className="text-center" style={{ color: "black" }}>
+            <p className="text-center" style={{ color: "white" }}>
               Usuario_actual
             </p>
 
@@ -73,10 +62,14 @@ const CrearPublicacion = () => {
             <Form
               onSubmit={handleSubmit}
               className="bg-light rounded shadow-sm p-4"
-              style={{ maxWidth: "300px", margin: "auto" }}
+              style={{
+                maxWidth: "300px",
+                margin: "auto",
+                background: "linear-gradient(to right, #cce7ff, #a0c4ff)",
+              }}
             >
               <Form.Group controlId="formImagen" className="mb-2">
-                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                <Form.Label className="fw-bold" style={{ color: "#4a4a4a" }}>
                   Imagen publicación
                 </Form.Label>
                 <Form.Control
@@ -86,11 +79,15 @@ const CrearPublicacion = () => {
                   onChange={handleInputChange}
                   placeholder="Ingresa la URL de la imagen"
                   required
+                  style={{
+                    borderColor: "#6c757d",
+                    boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.1)",
+                  }}
                 />
               </Form.Group>
 
               <Form.Group controlId="formTitulo" className="mb-2">
-                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                <Form.Label className="fw-bold" style={{ color: "#4a4a4a" }}>
                   Título publicación
                 </Form.Label>
                 <Form.Control
@@ -100,11 +97,15 @@ const CrearPublicacion = () => {
                   onChange={handleInputChange}
                   placeholder="Ingresa el título"
                   required
+                  style={{
+                    borderColor: "#6c757d",
+                    boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.1)",
+                  }}
                 />
               </Form.Group>
 
               <Form.Group controlId="formDescripcion" className="mb-2">
-                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                <Form.Label className="fw-bold" style={{ color: "#4a4a4a" }}>
                   Descripción publicación
                 </Form.Label>
                 <Form.Control
@@ -115,11 +116,15 @@ const CrearPublicacion = () => {
                   onChange={handleInputChange}
                   placeholder="Escribe la descripción"
                   required
+                  style={{
+                    borderColor: "#6c757d",
+                    boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.1)",
+                  }}
                 />
               </Form.Group>
 
               <Form.Group controlId="formPrecio" className="mb-2">
-                <Form.Label className="fw-bold" style={{ color: "black" }}>
+                <Form.Label className="fw-bold" style={{ color: "#4a4a4a" }}>
                   Precio
                 </Form.Label>
                 <Form.Control
@@ -129,19 +134,30 @@ const CrearPublicacion = () => {
                   onChange={handleInputChange}
                   placeholder="Ingresa el precio"
                   required
+                  style={{
+                    borderColor: "#6c757d",
+                    boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.1)",
+                  }}
                 />
               </Form.Group>
 
-              <Button variant="dark" type="submit" className="w-50">
+              <Button
+                variant="primary"
+                type="submit"
+                className="w-50"
+                style={{
+                  backgroundColor: "#000080",
+                  borderColor: "#0056b3",
+                  transition: "background-color 0.3s ease",
+                }}
+              >
                 Publicar
               </Button>
             </Form>
           </div>
         </Col>
       </Row>
-      <Row className="d-flex justify-content-end">
-        <CerrarSesionButton />
-      </Row>
+      <Row className="d-flex justify-content-end"></Row>
     </Container>
   );
 };

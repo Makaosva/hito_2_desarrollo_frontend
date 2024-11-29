@@ -1,5 +1,15 @@
 # Hito 2 - Desarrollo Frontend
 
+## Buenas tardes profesor, respecto a la consulta y recomendación de mostrar tablas a profesor:
+Se revisó tablas con profesor Abraham, se pasa a explicar el proceso que tenemos:
+La vista carrito muestra las publicaciones agregadas al carro, con su total por ítem y total final a pagar.
+Respecto a las tablas; la tabla Boleta es la boleta que se genera por usuario y la tabla intermedia
+entre Boleta y tabla Publicaciones es Items_Boleta corresponde al detalle de la compra, esto despues del pago.
+Se espera aclarar con esto lo del Hito 1. :)
+
+## Respecto a Hito 2 se realizó de acuerdo a las instrucciones de los profesores:
+Que no es necesario que toda la página con frontend tenga funcionalidad.
+
 ---
 
 ## Descripción

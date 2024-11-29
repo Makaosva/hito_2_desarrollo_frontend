@@ -41,31 +41,59 @@ const InicioSesion = () => {
       style={{ height: "calc(100vh - 140px)" }}
     >
       <h1 className="p-2">Iniciar Sesión</h1>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
+      <Form
+        onSubmit={handleSubmit}
+        style={{
+          maxWidth: "400px",
+          margin: "50px auto",
+          background: "linear-gradient(to bottom, #e6e9ef, #d4dae3)",
+          borderRadius: "10px",
+          padding: "20px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Form.Group className="mb-3">
+          <Form.Label
+            htmlFor="email"
+            style={{ fontWeight: "bold", color: "#343a40" }}
+          >
+            Email
+          </Form.Label>
           <Form.Control
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="name@example.com"
+            style={{
+              borderColor: "#a0c4ff",
+              borderRadius: "5px",
+            }}
           />
         </Form.Group>
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
+        <Form.Group className="mb-3">
+          <Form.Label
+            htmlFor="password"
+            style={{ fontWeight: "bold", color: "#343a40" }}
+          >
+            Password
+          </Form.Label>
           <Form.Control
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="*******"
+            style={{
+              borderColor: "#a0c4ff",
+              borderRadius: "5px",
+            }}
           />
         </Form.Group>
         <Button
           type="submit"
           className="btn btn-primary btn-lg boton m-3"
-          /*  onClick={handleGoToProfile} */
+          style={{ background: "#00CED1" }}
         >
           Iniciar Sesión
         </Button>
@@ -73,6 +101,7 @@ const InicioSesion = () => {
           type="button"
           className="btn btn-secondary btn-lg"
           onClick={handleGoBack}
+          style={{ background: "#00BFFF" }}
         >
           Volver
         </Button>

@@ -16,6 +16,8 @@ import Tienda from "./components/Tienda";
 import RutaPrivada from "./components/RutaPrivada";
 import MisFavoritos from "./views/MisFavoritos";
 
+// PROFESOR:EN README SE ESCRIBIÓ RESPUESTA RESPECTO A HITO 1
+
 function App() {
   return (
     <UsuariosProvider>
@@ -26,7 +28,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<InicioSesion />} />
           <Route path="/registro" element={<RegistroUsuario />} />
-
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/detalle-publicacion" element={<DetallePublicacion />} />
           <Route path="/tienda" element={<Tienda />} />

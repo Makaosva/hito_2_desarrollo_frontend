@@ -19,7 +19,6 @@ const MisFavoritos = () => {
       }}
     >
       <Row>
-        {/* Menú lateral */}
         <Col xs={12} md={3}>
           <MenuLateral />
         </Col>
@@ -39,7 +38,7 @@ const MisFavoritos = () => {
                     descripcion={pub.descripcion}
                     precio={pub.precio}
                     publicadoPor="Usuario_actual"
-                    mostrarAgregar={false}
+                    mostrarAgregar={true}
                     esFavorito={true}
                   />
                 </Col>
@@ -49,10 +48,7 @@ const MisFavoritos = () => {
             )}
           </Row>
         </Col>
-
-        {/* Contenido de las publicaciones favoritas */}
       </Row>
-      <CerrarSesionButton />
     </Container>
   );
 };

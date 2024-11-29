@@ -13,31 +13,14 @@ const CardPublicacion = ({
   publicadoPor,
   emailUsuario,
   mostrarAgregar = true, // para mostrar o no el boton agregar
-  handleVermasClick, // Agregamos esta prop
-  isPrivate = false, // Indicamos si es una vista privada
+
   esFavorito = false,
 }) => {
   const navigate = useNavigate();
 
-  /* const handleVerMas = () => {
-    if (isPrivate && handleVermasClick) {
-      handleVermasClick(); // Llama la función de cierre en la vista privada
-    }
-    navigate("/detalle-publicacion", {
-      state: {
-        imagen,
-        email: emailUsuario,
-      },
-    });
-  };
- */
   const handleAgregarAlCarrito = () => {
     navigate("/carrito");
   };
-
-  /* const handleverMas = () => {
-    navigate("/detalle-publicacion");
-  }; */
 
   const handleverMas = () => {
     navigate("/detalle-publicacion", {
@@ -49,7 +32,7 @@ const CardPublicacion = ({
   };
 
   return (
-    <Card className="mb-3 shadow-sm w-75 p-3 mx-auto">
+    <Card className="card mb-4 shadow-sm w-75 p-3 mx-auto">
       <Card.Img variant="top" src={imagen} />
       <Card.Body>
         <Card.Title>{titulo}</Card.Title>
@@ -62,11 +45,23 @@ const CardPublicacion = ({
         </Card.Text>
         <div className="d-flex justify-content-between">
           {mostrarAgregar && (
-            <Button variant="primary" onClick={handleAgregarAlCarrito}>
+            <Button
+              variant="dark"
+              style={{
+                backgroundColor: "#000",
+                border: "4px solid #34495e",
+                color: "#fff",
+              }}
+              onClick={handleAgregarAlCarrito}
+            >
               Agregar
             </Button>
           )}
-          <Button variant="secondary" onClick={handleverMas}>
+          <Button
+            variant="secondary"
+            style={{ border: "4px solid #34495e" }}
+            onClick={handleverMas}
+          >
             Ver Más
           </Button>
 
@@ -74,7 +69,7 @@ const CardPublicacion = ({
             <BsStarFill
               style={{
                 fontSize: "1.5rem",
-                color: "blue",
+                color: "#f39c12",
                 cursor: "pointer",
               }}
             />
@@ -82,7 +77,7 @@ const CardPublicacion = ({
             <BsStar
               style={{
                 fontSize: "1.5rem",
-                color: "blue",
+                color: "#f39c12",
                 cursor: "pointer",
               }}
             />

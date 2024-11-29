@@ -9,10 +9,11 @@ const initialUsuario = JSON.parse(localStorage.getItem("usuario")) || null;
 const UsuariosProvider = ({ children }) => {
   const initialStateToken = localStorage.getItem("token") || "";
   const [token, setToken] = useState(initialStateToken);
-  const [activeMenu, setActiveMenu] = useState(""); // se agrega para el menu lateral
-  const [sortOption, setSortOption] = useState(""); // estado para el sort
+  const [activeMenu, setActiveMenu] = useState("");
+  const [sortOption, setSortOption] = useState("");
   const [showCerrarSesion, setShowCerrarSesion] = useState(false);
   const [usuario, setUsuario] = useState(initialUsuario);
+
   //se agrega a MisPublicaciones.jsx
   const [MisPublicaciones, setMisPublicaciones] = useState([
     {
@@ -60,16 +61,6 @@ const UsuariosProvider = ({ children }) => {
       setShowCerrarSesion(false);
     }
   };
-
-  const handleMenuCambio = (menuName) => {
-    setActiveMenu(menuName);
-    if (menuName === "DetallePublicacion") {
-      setShowCerrarSesion(true);
-    } else {
-      setShowCerrarSesion(false);
-    }
-  };
-
 
   useEffect(() => {
     let sortedPublicaciones = [...MisPublicaciones];
@@ -135,7 +126,6 @@ const UsuariosProvider = ({ children }) => {
         setToken,
         activeMenu,
         setActiveMenu: handleMenuChange,
-        setActiveMenu: handleMenuCambio,
         showCerrarSesion,
         setShowCerrarSesion,
         MisPublicaciones,
