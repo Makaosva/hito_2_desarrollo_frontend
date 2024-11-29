@@ -4,7 +4,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import MenuLateral from "../components/MenuLateral";
 import { UsuarioContext } from "../context/UsuarioContext";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const Perfil = () => {
   const { setActiveMenu, usuario, logout } = useContext(UsuarioContext);

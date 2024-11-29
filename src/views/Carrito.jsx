@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { BsPlusCircle, BsDashCircle, BsTrash } from "react-icons/bs";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 
 const Carrito = () => {
   const [carrito, setCarrito] = useState([

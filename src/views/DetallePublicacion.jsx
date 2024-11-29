@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import MenuLateral from "../components/MenuLateral";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 import { UsuarioContext } from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
 

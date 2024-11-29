@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import CardPublicacion from "../components/CardPublicacion";
-import CerrarSesionButton from "../components/CerrarSesionButton";
 import { UsuarioContext } from "../context/UsuarioContext";
 import MenuLateral from "./MenuLateral";
 import OrdenarPor from "../components/OrdenarPor";
