@@ -34,7 +34,7 @@ const Tienda = () => {
 
   return (
     <Container>
-      {/* elementos visibles en vista privada de la tienda */}
+      {/* elementos visibles en vista privada de la tienda desde perfil */}
       {usuario && activeMenu === "Tienda" ? (
         <div
           style={{
@@ -106,7 +106,7 @@ const Tienda = () => {
           </Container>
         </div>
       ) : (
-        // para elementos vista publica
+        // para elementos vista publica desde home
         <Row>
           <Col xs={12}>
             <h3 className="text-center mb-2 mt-2 mb-4">Tienda de Cursos</h3>

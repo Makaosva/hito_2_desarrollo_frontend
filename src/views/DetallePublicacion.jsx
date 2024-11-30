@@ -5,6 +5,9 @@ import MenuLateral from "../components/MenuLateral";
 import { UsuarioContext } from "../context/UsuarioContext";
 import { useNavigate } from "react-router-dom";
 
+// Vista detalle de publicación por recomendación de profesor ya no está en el menú, pero si muestra el detalle
+// en su vista al hacer click en ver más desde la card
+
 const DetallePublicacion = () => {
   const location = useLocation();
 

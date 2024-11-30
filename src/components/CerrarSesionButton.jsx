@@ -12,17 +12,20 @@ const CerrarSesionButton = () => {
     navigate("/login");
   };
 
-  // Ocultar botón en la vista DetallePublicacion
+  // Ocultar botón cerrar sesion en la vista DetallePublicacion
   if (location.pathname.startsWith("/detalle-publicacion")) {
     return null;
   }
-
   // Ocultar el botón en la vista de login
   if (window.location.pathname === "/login") {
     return null;
   }
-
+  // Ocultar el botón en la vista de home
   if (window.location.pathname === "/") {
+    return null;
+  }
+  // Ocultar el botón en la vista de carrito
+  if (window.location.pathname === "/carrito") {
     return null;
   }
 
@@ -33,7 +36,6 @@ const CerrarSesionButton = () => {
     activeMenu !== "Mis Publicaciones" &&
     activeMenu !== "Tienda" &&
     activeMenu !== "Mis Favoritos" &&
-    activeMenu !== "Carrito" &&
     activeMenu !== "Actualizar Perfil"
   ) {
     return null;
