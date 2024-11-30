@@ -117,7 +117,7 @@ function NavbarMarket() {
                     <FaShoppingCart style={{ fontSize: "1.4rem" }} />
                   </Nav.Link>
                 )}
-                <Nav.Link>
+                <Nav.Link as={NavLink}>
                   <CerrarSesionButton />
                 </Nav.Link>
               </Nav>

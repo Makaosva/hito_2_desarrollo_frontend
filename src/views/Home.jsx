@@ -11,6 +11,9 @@ import { FaArrowUp } from "react-icons/fa";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
+//HITO 2, DE ACUERDO A INSTRUCCIONES DE PROFESORES NO ES NECESARIO QUE TODO TENGA FUNCIONALIDAD O SE MUESTRE EL USUARIO
+// YA QUE SE VERÁ EN BACKEND CON LA BASE DE DATOS
+
 const Home = () => {
   const { activeMenu } = useContext(UsuarioContext);
 
@@ -70,7 +73,7 @@ const Home = () => {
       >
         <Tienda />
       </section>
-      {/* Ícono de React al final de la página con funcionalidad para subir */}
+      {/* Ícono de React al final de la página para subir */}
       <div
         className="react-icon-scroll"
         style={{

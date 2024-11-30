@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState} from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const UsuarioContext = createContext();
 
@@ -50,6 +50,8 @@ const UsuariosProvider = ({ children }) => {
 
   const logout = () => {
     setUsuario(null);
+    setActiveMenu(null);
+    setShowCerrarSesion(false);
     localStorage.removeItem("usuario");
   };
 

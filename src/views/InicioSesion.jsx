@@ -21,6 +21,11 @@ const InicioSesion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!email || !password) {
+      alert("Completa todos los campos");
+      return;
+    }
+
     const isLoggedIn = await loginWithEmailAndPassword(email, password);
 
     if (isLoggedIn) {
